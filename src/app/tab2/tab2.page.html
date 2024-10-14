@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ChatGPT Integration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input
+      [(ngModel)]="userPrompt"
+      placeholder="Enter your prompt here"
+      type="text"
+    ></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="sendMessage()">Send</ion-button>
+
+  <ion-card *ngIf="response">
+    <ion-card-header>
+      <ion-card-title>ChatGPT Response</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ response }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
