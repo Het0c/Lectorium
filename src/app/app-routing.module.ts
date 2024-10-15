@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+// import { Ingresado } from './guards/ingresado.guard'; //Guard's importation
 const routes: Routes = [
   {
     path: '',
