@@ -22,5 +22,12 @@ export class Tab1Page {
     const value = event.detail.value;  // Obtén el valor del campo de búsqueda
     console.log('Valor de búsqueda:', value);
     // Aquí puedes agregar la lógica para filtrar o buscar datos
+
   }
-}
+  logout() {
+    localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('isLoggedIn');   }
+
+  }
+
+

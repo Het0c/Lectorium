@@ -16,6 +16,7 @@ export class LoginPage {
 
   onLogin() {
     const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
+    localStorage.setItem('isLoggedIn', 'true'); // Establecer el indicador de sesión
     if (this.credentials.username === savedUser.username && this.credentials.password === savedUser.password) {
       this.navCtrl.navigateForward('/home', {
         queryParams: { username: this.credentials.username }
