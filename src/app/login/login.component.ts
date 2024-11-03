@@ -1,32 +1,36 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth.service'; // Servicio de autenticación
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class LoginComponent {
-  credentials = {
-    username: '',
-    password: ''
-  };
+export class LoginPage {
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private alertController: AlertController) { }
 
-  onLogin() {
-    this.authService.login(this.credentials.username, this.credentials.password)
-      .then(response => {
-        console.log('Inicio de sesión exitoso', response);
-        // Redirecciona o muestra un mensaje de éxito
-      })
-      .catch(error => {
-        console.error('Error en el inicio de sesión', error);
-        // Muestra un mensaje de error
-      });
+  async login(email: string, password: string) {
+    this.authService.login(email, password).subscribe(
+      async response => {
+        this.authService.setSession(email, password);
+        await this.showAlert('Login exitoso', 'Has iniciado sesión correctamente.');
+      },
+      async error => {
+        await this.showAlert('Error de Login', 'No se pudo iniciar sesión. Por favor, verifica tus credenciales.');
+      }
+    );
   }
 
-  goToRegister() {
-    // Implementa la lógica para redirigir a la página de registro
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 }
+
+//mmh

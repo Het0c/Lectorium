@@ -1,0 +1,4 @@
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+<ul>
+  <li *ngFor="let book of books">{{ book.volumeInfo.title }}</li>
+</ul>
