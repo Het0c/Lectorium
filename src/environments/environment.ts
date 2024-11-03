@@ -3,8 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyAftcwvphVKY8wkvPl9wEi-_A-ADnSKHOY",
+    authDomain: "lectorium-9aa8d.firebaseapp.com",
+    projectId: "lectorium-9aa8d",
+    storageBucket: "lectorium-9aa8d.firebasestorage.app",
+    messagingSenderId: "870212383354",
+    appId: "1:870212383354:web:80c642ab4933d51dcf41c3",
+    measurementId: "G-H312NGJ2Y0"
+  }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

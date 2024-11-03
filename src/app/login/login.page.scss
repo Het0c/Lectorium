@@ -2,13 +2,14 @@
     height: 100%;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #3b82f6 0%, #edb40a 100%);
+    background: linear-gradient(135deg, #00358b 0%, #000000 100%);
   }
   
   ion-card {
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     animation: fadeIn 0.6s ease-in-out;
+    justify-content: center;
   }
   
   .login-icon {
@@ -43,5 +44,34 @@
     100% {
       transform: scale(1);
     }
+  }
+  
+  .login-background {
+    background: url('/assets/img/fondo-geometrico.jpg') no-repeat center center / cover;
+  }
+  
+  .login-card {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    background-color: #fff;
+  }
+  
+  .input-item {
+    margin-bottom: 20px;
+  }
+  
+  .login-button {
+    background: linear-gradient(135deg, #6e45e2, #88d3ce);
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(110, 69, 226, 0.5);
+  }
+  
+  .register-button {
+    background: #fff;
+    color: #6e45e2;
+    border-radius: 25px;
+    border: 2px solid #6e45e2;
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(110, 69, 226, 0.5);
   }
   

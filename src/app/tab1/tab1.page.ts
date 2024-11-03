@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { GoogleBooksService } from '../google-books.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -29,5 +31,27 @@ export class Tab1Page {
     localStorage.removeItem('isLoggedIn');   }
 
   }
+
+
+
+// export class HomePage implements OnInit {
+
+//   books: any[] = [];
+//   query: string = 'Harry Potter';
+
+//   constructor(private googleBooksService: GoogleBooksService) { }
+
+//   ngOnInit() {
+//     this.searchBooks(this.query);
+//   }
+
+//   searchBooks(query: string) {
+//     this.googleBooksService.searchBooks(query).subscribe(response => {
+//       this.books = response.items;
+//     }, error => {
+//       console.error(error);
+//     });
+//   }
+// }
 
 
