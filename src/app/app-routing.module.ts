@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { Ingresado } from './guards/ingresado.guard';
+import { IngresadoGuard } from './guards/ingresado.guard';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { BookListComponent } from './book-list/book-list.component'; // Importa el componente
 
@@ -15,7 +15,7 @@ const routes: Routes = [
     {
         path: '',
         loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
-        canActivate: [Ingresado]
+        canActivate: [IngresadoGuard]
     },
     { path: 'book-search', component: BookSearchComponent },
     { path: 'book-list', component: BookListComponent }, // Añade la ruta para book-list

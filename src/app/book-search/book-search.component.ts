@@ -4,7 +4,7 @@ import { BookService } from '../services/book.service'; // Asegúrate de que la 
 @Component({
   selector: 'app-book-search',
   templateUrl: './book-search.component.html',
-  styleUrls: ['./book-search.component.css']
+  styleUrls: ['./book-search.component.scss']
 })
 export class BookSearchComponent implements OnInit {
   books: any[] = [];

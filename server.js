@@ -36,6 +36,24 @@ const transporter = nodemailer.createTransport({
     pass: 'imxm mmng msdr qdxi'
   }
 });
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  User.findOne({ where: { email, password } })
+    .then(user => {
+      if (user) {
+        res.json(user);
+      } else {
+        res.status(400).json({ error: 'Invalid credentials' });
+      }
+    })
+    .catch(err => res.status(500).json({ error: err }));
+});
+app.post('/register', (req, res) => {
+  const { email, password } = req.body;
+  User.create({ email, password })
+    .then(user => res.json(user)) // Debería retornar el usuario creado
+    .catch(err => res.status(500).json({ error: err }));
+});
 // RX8REVJM3GUAPWYGU1NMHWUX
 app.post('/reset-password', (req, res) => {
   const { email } = req.body;

@@ -4,20 +4,27 @@ import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-registro',
+  selector: 'app-registo',
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage {
   credentials = {
     username: '',
-    password: ''
+    password: '',
+    confirmPassword: '',
+    agreeToTerms: false
   };
 
   constructor(private navCtrl: NavController, private authService: AuthService, private alertController: AlertController) {}
 
   async onRegister() {
-    if (this.credentials.username && this.credentials.password) {
+    if (this.credentials.password !== this.credentials.confirmPassword) {
+      await this.showAlert('Error', 'Las contraseñas no coinciden.');
+      return;
+    }
+
+    if (this.credentials.agreeToTerms) {
       this.authService.register(this.credentials.username, this.credentials.password).subscribe(
         async response => {
           await this.showAlert('Registro exitoso', 'Tu cuenta ha sido creada correctamente.');
@@ -28,7 +35,7 @@ export class RegistroPage {
         }
       );
     } else {
-      console.log('Todos los campos son requeridos');
+      await this.showAlert('Error', 'Debes aceptar los términos y condiciones.');
     }
   }
 
@@ -39,5 +46,9 @@ export class RegistroPage {
       buttons: ['OK']
     });
     await alert.present();
+  }
+
+  goToLogin() {
+    this.navCtrl.navigateBack('/login');
   }
 }

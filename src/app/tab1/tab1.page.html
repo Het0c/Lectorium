@@ -1,120 +1,59 @@
-<!-- Menú Lateral -->
-<ion-menu side="start" contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menú</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item>Inicio</ion-item>
-      <ion-item>Perfil</ion-item>
-      <ion-item>Configuración</ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
 <ion-header>
   <ion-toolbar>
-    <!-- Icono de Menú (tres rayitas) -->
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-
-    <ion-title>
-      <!-- Título de la página -->
-      Summafiry
-    </ion-title>
-
-    <!-- Icono de búsqueda -->
-    <ion-buttons slot="end">
-      <ion-button (click)="toggleSearch()">
-        <ion-icon name="search-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-
-  <!-- Campo de búsqueda que se despliega -->
-  <ion-toolbar *ngIf="searchVisible">
-    <ion-searchbar
-      placeholder="Buscar..."
-      [(ngModel)]="searchQuery"
-      (ionInput)="onSearchChange($event)">
-    </ion-searchbar>
+    <ion-searchbar placeholder="Find your next book"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content id="main-content">
-  <!-- Título de Recomendaciones -->
-  <ion-toolbar>
-    <ion-title>Recomendaciones</ion-title>
-  </ion-toolbar>
+<ion-content>
+  <div class="tabs">
+    <span class="tab active">For You</span>
+    <span class="tab">Best Sellers</span>
+    <span class="tab">Categories</span>
+    <span class="tab">Collections</span>
+  </div>
 
-  <!-- Imagen Horizontal -->
-  <ion-img src="assets/recomendacion.jpg" class="horizontal-image"></ion-img>
+  <div class="section">
+    <h2>Personalized for you</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let book of personalizedBooks">
+          <ion-card>
+            <img [src]="book.image" />
+            <ion-card-content>
+              <h3>{{ book.title }}</h3>
+              <p>{{ book.author }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
-  <!-- Sección de Categorías -->
-  <ion-toolbar>
-    <ion-title>Categorías</ion-title>
-  </ion-toolbar>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" size-md="4" size-lg="2">
-        <ion-card>
-          <ion-img src="assets/Ficción.jpg"></ion-img>
-          <ion-card-header>
-            <ion-card-title>Ficción</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6" size-md="4" size-lg="2">
-        <ion-card>
-          <ion-img src="assets/No Ficción.jpg"></ion-img>
-          <ion-card-header>
-            <ion-card-title>No Ficción</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6" size-md="4" size-lg="2">
-        <ion-card>
-          <ion-img src="assets/Clásicos.jpg"></ion-img>
-          <ion-card-header>
-            <ion-card-title>Clásicos</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6" size-md="4" size-lg="2">
-        <ion-card>
-          <ion-img src="assets/Literatura Infantil y Juvenil.jpg"></ion-img>
-          <ion-card-header>
-            <ion-card-title>Literatura Infantil y Juvenil</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6" size-md="4" size-lg="2">
-        <ion-card>
-          <ion-img src="assets/Historia.jpg"></ion-img>
-          <ion-card-header>
-            <ion-card-title>Historia</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6" size-md="4" size-lg="2">
-        <ion-card>
-          <ion-img src="assets/Ciencia y Tecnología.jpg"></ion-img>
-          <ion-card-header>
-            <ion-card-title>Ciencia y Tecnología</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <!-- Botón Flotante -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-img src="assets/IA icono.png"></ion-img>
-    </ion-fab-button>
-  </ion-fab>
+  <div class="section">
+    <h2>Popular in Business & Leadership</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let book of popularBooks">
+          <ion-card>
+            <img [src]="book.image" />
+            <ion-card-content>
+              <h3>{{ book.title }}</h3>
+              <p>{{ book.author }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button>Home</ion-button>
+      <ion-button>Discover</ion-button>
+      <ion-button>My Books</ion-button>
+      <ion-button>Profile</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

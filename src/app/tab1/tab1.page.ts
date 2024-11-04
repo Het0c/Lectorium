@@ -1,57 +1,42 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { GoogleBooksService } from '../google-books.service';
-
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
+  styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  searchVisible: boolean = false; // Controla la visibilidad del campo de búsqueda
-  searchQuery: string = '';       // Almacena el valor de búsqueda
 
-  constructor(private alertController: AlertController) {}
+  // Datos de ejemplo para la sección "Personalized for you"
+  personalizedBooks = [
+    {
+      title: 'The 7 Habits of Highly Effective People',
+      author: 'Stephen Covey',
+      image: 'assets/images/7_habits.jpg'
+    },
+    {
+      title: 'The Lean Startup',
+      author: 'Eric Ries',
+      image: 'assets/images/lean_startup.jpg'
+    },
+    // Agrega más libros si lo deseas
+  ];
 
-  // Alterna la visibilidad del campo de búsqueda
-  toggleSearch() {
-    this.searchVisible = !this.searchVisible;
-  }
+  // Datos de ejemplo para la sección "Popular in Business & Leadership"
+  popularBooks = [
+    {
+      title: 'The Power of Habit',
+      author: 'Charles Duhigg',
+      image: 'assets/images/power_of_habit.jpg'
+    },
+    {
+      title: 'The Lean Startup',
+      author: 'Eric Ries',
+      image: 'assets/images/lean_startup.jpg'
+    },
+    // Agrega más libros si lo deseas
+  ];
 
-  // Maneja los cambios en el campo de búsqueda
-  onSearchChange(event: any) {
-    const value = event.detail.value;  // Obtén el valor del campo de búsqueda
-    console.log('Valor de búsqueda:', value);
-    // Aquí puedes agregar la lógica para filtrar o buscar datos
+  constructor() {}
 
-  }
-  logout() {
-    localStorage.removeItem('loggedInUser');
-    localStorage.removeItem('isLoggedIn');   }
-
-  }
-
-
-
-// export class HomePage implements OnInit {
-
-//   books: any[] = [];
-//   query: string = 'Harry Potter';
-
-//   constructor(private googleBooksService: GoogleBooksService) { }
-
-//   ngOnInit() {
-//     this.searchBooks(this.query);
-//   }
-
-//   searchBooks(query: string) {
-//     this.googleBooksService.searchBooks(query).subscribe(response => {
-//       this.books = response.items;
-//     }, error => {
-//       console.error(error);
-//     });
-//   }
-// }
-
-
+}

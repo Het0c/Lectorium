@@ -1,31 +1,46 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Registro</ion-title>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Sign up for a free account</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
   <ion-grid class="register-grid">
     <ion-row class="ion-justify-content-center">
-      <ion-col size="12" size-md="6" size-lg="4">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">
-              <ion-icon name="person-add-outline" style="font-size: 5rem; color: #3880ff;"></ion-icon>
-            </ion-card-title>
-          </ion-card-header>
+      <ion-col size="12" size-md="8" size-lg="6">
+        <ion-card class="register-card">
           <ion-card-content>
             <form (ngSubmit)="onRegister()">
-              <ion-item>
-                <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
-                <ion-label position="floating">Usuario</ion-label>
-                <ion-input [(ngModel)]="credentials.username" name="username" type="text" required></ion-input>
+              <ion-item class="input-item">
+                <ion-label position="floating">Email</ion-label>
+                <ion-input [(ngModel)]="credentials.username" name="username" type="email" required></ion-input>
               </ion-item>
-              <ion-item>
-                <ion-icon name="lock-closed-outline" slot="start" color="primary"></ion-icon>
-                <ion-label position="floating">Contraseña</ion-label>
+              <ion-item class="input-item">
+                <ion-label position="floating">Password</ion-label>
                 <ion-input [(ngModel)]="credentials.password" name="password" type="password" required></ion-input>
               </ion-item>
-              <ion-button expand="full" color="primary" type="submit">Registrar</ion-button>
+              <ion-item class="input-item">
+                <ion-label position="floating">Confirm password</ion-label>
+                <ion-input [(ngModel)]="credentials.confirmPassword" name="confirmPassword" type="password" required></ion-input>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-checkbox [(ngModel)]="credentials.agreeToTerms" name="agreeToTerms" slot="start" required></ion-checkbox>
+                <ion-label>
+                  I agree to the terms of service, privacy policy...
+                </ion-label>
+              </ion-item>
+              <p class="terms-text">By checking this box, you confirm that you have read and accept our terms.</p>
+              <ion-row class="button-row">
+                <ion-col size="6">
+                  <ion-button expand="full" class="signup-button" type="submit">Sign Up</ion-button>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-button expand="full" color="light" (click)="goToLogin()">Log In</ion-button>
+                </ion-col>
+              </ion-row>
             </form>
           </ion-card-content>
         </ion-card>

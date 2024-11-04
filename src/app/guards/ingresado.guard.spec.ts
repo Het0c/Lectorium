@@ -1,17 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { CanActivateFn } from '@angular/router';
 
-import { ingresadoGuard } from './ingresado.guard';
+import { IngresadoGuard } from './ingresado.guard'; // Importar correctamente
 
-describe('ingresadoGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => ingresadoGuard(...guardParameters));
+describe('IngresadoGuard', () => {
+  let guard: IngresadoGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [IngresadoGuard]
+    });
+    guard = TestBed.inject(IngresadoGuard);
   });
 
   it('should be created', () => {
-    expect(executeGuard).toBeTruthy();
+    expect(guard).toBeTruthy();
   });
 });

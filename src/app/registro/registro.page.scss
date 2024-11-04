@@ -1,0 +1,55 @@
+.login-grid {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #00358b 0%, #000000 100%);
+  }
+  
+  .login-card {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    background-color: #fff;
+  }
+  
+  .login-icon {
+    font-size: 5rem;
+    color: #3880ff;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .input-item {
+    margin-bottom: 20px;
+  }
+  
+  .login-button {
+    background: linear-gradient(135deg, #6e45e2, #88d3ce);
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(110, 69, 226, 0.5);
+    margin-top: 20px;
+  }
+  
+  .register-button {
+    background: #fff;
+    color: #6e45e2;
+    border-radius: 25px;
+    border: 2px solid #6e45e2;
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(110, 69, 226, 0.5);
+  }
+  
+  .login-background {
+    background: url('/assets/img/fondo-geometrico.jpg') no-repeat center center / cover;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
