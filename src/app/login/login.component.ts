@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service'; // Servicio de autenticación
+import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -8,13 +8,16 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
+  credentials = { username: '', password: '' };
 
   constructor(private authService: AuthService, private alertController: AlertController) { }
 
-  async login(email: string, password: string) {
-    this.authService.login(email, password).subscribe(
+  async onLogin() {
+    const { username, password } = this.credentials;
+
+    this.authService.login(username, password).subscribe(
       async response => {
-        this.authService.setSession(email, password);
+        this.authService.setSession(username, password);
         await this.showAlert('Login exitoso', 'Has iniciado sesión correctamente.');
       },
       async error => {
@@ -31,6 +34,8 @@ export class LoginPage {
     });
     await alert.present();
   }
-}
 
-//mmh
+  goToRegister() {
+    // Implementa la navegación al registro si es necesario
+  }
+}
