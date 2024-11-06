@@ -28,7 +28,9 @@ ion-toolbar {
   }
   
   .section {
-    padding: 10px;
+    
+    justify-content: center; /* Centra el card horizontalmente */ 
+    padding: 10px;/* Espacio alrededor del card */
   
     h2 {
       font-weight: 600;
@@ -71,4 +73,16 @@ ion-toolbar {
       font-size: 14px;
     }
   }
-  
+
+
+  @media (min-width: 768px) {
+    ion-card {
+      max-width: 500px;
+    }
+ }
+ 
+ @media (min-width: 1024px) {
+    ion-card {
+      max-width: 700px;
+    }
+ }

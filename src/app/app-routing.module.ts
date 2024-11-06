@@ -12,7 +12,6 @@ const routes: Routes = [
     { path: 'forgot-password', loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule) },
     { path: 'verify-code', loadChildren: () => import('./verify-code/verify-code.module').then(m => m.VerifyCodePageModule) },
     { path: 'update-password', loadChildren: () => import('./update-password/update-password.module').then(m => m.UpdatePasswordPageModule) },
-    { path: 'categoria', loadChildren: () => import('./categorias/categorias.module').then(m => m.CategoriasPageModule)},
     {
         path: '',
         loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
@@ -31,9 +30,14 @@ const routes: Routes = [
     loadChildren: () => import('./update-password/update-password.module').then( m => m.UpdatePasswordPageModule)
   },
   {
-    path: 'categorias',
-    loadChildren: () => import('./categorias/categorias.module').then( m => m.CategoriasPageModule)
+    path: 'tab1',
+    loadChildren: () => import('./tab1/tab1.module').then( m => m.Tab1PageModule)
   },
+  {
+    path: 'tab2',
+    loadChildren: () => import('./tab2/tab2.module').then( m => m.Tab2PageModule)
+  },
+
 
 
 

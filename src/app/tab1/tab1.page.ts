@@ -38,8 +38,5 @@ export class Tab1Page {
     // Agrega más libros si lo deseas
   ];
   
-  constructor(private navCtrl: NavController) {}
-  goToCategoria() {
-    this.navCtrl.navigateForward('/categoria');
-  }
+  constructor() {}
 }
