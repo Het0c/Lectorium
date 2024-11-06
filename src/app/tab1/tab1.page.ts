@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-tab1',
@@ -36,7 +37,9 @@ export class Tab1Page {
     },
     // Agrega más libros si lo deseas
   ];
-
-  constructor() {}
-
+  
+  constructor(private navCtrl: NavController) {}
+  goToCategoria() {
+    this.navCtrl.navigateForward('/categoria');
+  }
 }

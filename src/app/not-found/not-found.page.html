@@ -1,11 +1,25 @@
-<ion-header>
+<ion-header class="custom-header">
   <ion-toolbar>
-    <ion-title>Error 404</ion-title>
+    <ion-title class="ion-text-center">Error 404</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <h1>Página no encontrada</h1>
-  <p>Lo sentimos, la página que estás buscando no existe.</p>
-  <ion-button routerLink="/">Volver a la página principal</ion-button>
+<ion-content>
+  <img src="/assets/bookshelf.jpg" class="background-image"/>
+  <ion-grid class="ion-grid">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="ion-text-center">Pagina no encontrada</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="ion-text-center">Lo sentimos, la página que estás buscando no existe.</ion-card-content>
+          <ion-card-content class="ion-text-center">
+            <ion-button routerLink="/">Volver a la página principal</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+<ion-footer></ion-footer>

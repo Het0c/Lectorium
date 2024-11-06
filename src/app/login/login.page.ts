@@ -37,8 +37,8 @@ export class LoginPage {
     );
   }
 
-  goToRegister() {
-    this.navCtrl.navigateForward('/register');
+  goToRegistro() {
+    this.navCtrl.navigateForward('/registro');
   }
 
   goToForgotPassword() {

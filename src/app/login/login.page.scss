@@ -2,7 +2,7 @@
     height: 100%;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #00358b 0%, #000000 100%);
+    background: linear-gradient(135deg, #002b70 0%, #000000 100%);
   }
   
   ion-card {
@@ -10,12 +10,13 @@
     border-radius: 12px;
     animation: fadeIn 0.6s ease-in-out;
     justify-content: center;
+    margin-top: 100px;
   }
   
   .login-icon {
     font-size: 5rem;
-    color: #3880ff;
-    animation: pulse 1.5s infinite;
+    color: #000000;
+    animation: pulse 5s infinite;
   }
   
   .login-button {
@@ -39,7 +40,7 @@
       transform: scale(1);
     }
     50% {
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
     100% {
       transform: scale(1);
@@ -57,19 +58,20 @@
   }
   
   .input-item {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   
   .login-button {
     background: linear-gradient(135deg, #6e45e2, #88d3ce);
-    border-radius: 25px;
+    border-radius: 5px;
+    border: 2px solid #6862ff;
     box-shadow: 0 5px 15px rgba(110, 69, 226, 0.5);
   }
   
   .register-button {
     background: #fff;
     color: #ffffff;
-    border-radius: 25px;
+    border-radius: 5px;
     border: 2px solid #6e45e2;
     margin-top: 10px;
     box-shadow: 0 5px 15px rgba(110, 69, 226, 0.5);
