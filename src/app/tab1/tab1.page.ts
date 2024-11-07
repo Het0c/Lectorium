@@ -17,12 +17,12 @@ export class Tab1Page implements OnInit {
     {
       title: 'The 7 Habits of Highly Effective People',
       author: 'Stephen Covey',
-      image: 'assets/images/7_habits.jpg'
+      image: 'assets/7_habits.jpg'
     },
     {
       title: 'The Lean Startup',
       author: 'Eric Ries',
-      image: 'assets/images/lean_startup.jpg'
+      image: 'assets/lean_startup.jpg'
     },
   ];
 
