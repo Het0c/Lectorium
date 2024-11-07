@@ -36,7 +36,11 @@ const routes: Routes = [
   {
     path: 'tab2',
     loadChildren: () => import('./tab2/tab2.module').then( m => m.Tab2PageModule)
+  },  {
+    path: 'libros-ciencia',
+    loadChildren: () => import('./libros-ciencia/libros-ciencia.module').then( m => m.LibrosCienciaPageModule)
   },
+
 
 
 
