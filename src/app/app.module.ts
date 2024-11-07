@@ -8,15 +8,19 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+
 @NgModule({
-  declarations: [AppComponent], // Declarar los componentes
-  imports: [
+  declarations: [AppComponent], 
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    BarcodeScanner // Agrega BarcodeScanner como proveedor
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

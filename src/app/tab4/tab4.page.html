@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>tab4</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">tab4</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+<ion-content>
+  <ion-button (click)="scanQR()">Escanear QR</ion-button>
+
+  <!-- Muestra el resultado del escaneo si existe -->
+  <ion-card *ngIf="scanResult">
+    <ion-card-header>Resultado del QR</ion-card-header>
+    <ion-card-content>{{ scanResult }}</ion-card-content>
+  </ion-card>
+</ion-content>

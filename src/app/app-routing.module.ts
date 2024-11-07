@@ -87,6 +87,10 @@ const routes: Routes = [
     path: 'book-preview',
     loadChildren: () => import('./book-preview/book-preview.module').then( m => m.BookPreviewPageModule)
   },
+  {
+    path: 'tab4',
+    loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+  },
 
 
 
