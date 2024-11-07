@@ -47,6 +47,10 @@ ion-toolbar {
     --background: #ffffff;
   }
   
+  .content-background{
+    background-image: url('/assets/papel.jpg');
+  }
+
   ion-searchbar {
     --background: #f1f1f1;
     --color: #000;
@@ -78,6 +82,7 @@ ion-toolbar {
     padding: 10px 0;
     background-color: #ffffff;
     font-weight: 500;
+    
   
     .tab {
       padding: 5px;
@@ -92,6 +97,10 @@ ion-toolbar {
   
   .section {
     padding: 10px;
+    background-image: url('/assets/papel.jpg');
+    background-size: cover;
+    background-position: center; /* Centra la imagen en el grid */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
   
     h2 {
       font-weight: 600;
