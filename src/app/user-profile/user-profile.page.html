@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="user.profilePicture" *ngIf="user.profilePicture" />
+    <ion-card-content>
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.username }}</p>
+      <p>{{ user.bio }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>Libros Leídos</h2>
+        <p>{{ user.booksRead }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h2>Libros en Lista de Deseos</h2>
+        <p>{{ user.booksWishlist }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h2>Reseñas Escritas</h2>
+        <p>{{ user.reviews }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="section">
+    <h2>Libros Favoritos</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let book of favoriteBooks">
+          <ion-card>
+            <img [src]="book.cover" />
+            <ion-card-content>
+              <h3>{{ book.title }}</h3>
+              <p>{{ book.author }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons class="ion-justify-content-center">
+        <ion-button routerLink="/edit-profile">Editar Perfil</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
