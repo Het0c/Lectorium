@@ -7,7 +7,7 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page {
-  scanResult: string;
+  scanResult: string = '';  // Inicializa scanResult para evitar errores
 
   constructor(private barcodeScanner: BarcodeScanner) {}
 
