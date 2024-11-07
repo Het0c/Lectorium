@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -8,25 +8,40 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  credentials = { username: '', password: '' };
+  credentials = { email: '', password: '' };
 
-  constructor(private authService: AuthService, private alertController: AlertController) { }
+  constructor(
+    private authService: AuthService,
+    private alertController: AlertController,
+    private toastController: ToastController
+  ) {}
 
   async onLogin() {
-    const { username, password } = this.credentials;
+    const { email, password } = this.credentials;
 
-    this.authService.login(username, password).subscribe(
+    this.authService.login(email, password).subscribe(
       async response => {
-        this.authService.setSession(username, password);
-        await this.showAlert('Login exitoso', 'Has iniciado sesión correctamente.');
+        this.authService.setSession(email, password);
+        await this.showSuccessToast('Login exitoso. Has iniciado sesión correctamente.');
       },
       async error => {
-        await this.showAlert('Error de Login', 'No se pudo iniciar sesión. Por favor, verifica tus credenciales.');
+        console.error('Error de Login', error); // Depuración
+        await this.showErrorAlert('Error de Login', `No se pudo iniciar sesión. ${error.error.error || 'Por favor, verifica tus credenciales.'}`);
       }
     );
   }
 
-  async showAlert(header: string, message: string) {
+  async showSuccessToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      color: 'success',
+      position: 'top'
+    });
+    toast.present();
+  }
+
+  async showErrorAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header,
       message,
@@ -35,7 +50,4 @@ export class LoginPage {
     await alert.present();
   }
 
-  goToRegister() {
-    // Implementa la navegación al registro si es necesario
-  }
 }

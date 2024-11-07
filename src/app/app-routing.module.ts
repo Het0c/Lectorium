@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'forgot-password', loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule) },
     { path: 'verify-code', loadChildren: () => import('./verify-code/verify-code.module').then(m => m.VerifyCodePageModule) },
     { path: 'update-password', loadChildren: () => import('./update-password/update-password.module').then(m => m.UpdatePasswordPageModule) },
-
+    {path: 'user-profile', loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)},
 
     { path: 'book-preview', loadChildren: () => import('./book-preview/book-preview.module').then(m => m.BookPreviewPageModule) },
 
@@ -48,10 +48,7 @@ const routes: Routes = [
     path: 'tab4',
     loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
   },
-  {
-    path: 'user-profile',
-    loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)
-  },
+
 
 ];
 

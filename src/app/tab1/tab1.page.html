@@ -2,7 +2,7 @@
   <ion-toolbar>
 
     <div class="search-container">
-      <ion-searchbar placeholder="Find your next book" [(ngModel)]="searchQuery" (ionInput)="onSearchChange($event)"></ion-searchbar>
+      <ion-searchbar placeholder="Encuentra tu proximo libro" [(ngModel)]="searchQuery" (ionInput)="onSearchChange($event)"></ion-searchbar>
       <ion-button shape="round" class="cam-button"><ion-icon class="large-icon" name="barcode-outline"></ion-icon></ion-button>
     </div>
 
@@ -27,7 +27,7 @@
             <ion-card-content>
               <h3>{{ book.title }}</h3>
               <p>{{ book.authors?.join(', ') }}</p>
-              <p>{{ book.description }}</p>  <!-- Mostrar solo la descripción truncada aquí -->
+              <p>{{ book.description }}</p> 
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -76,7 +76,7 @@
       <ion-button>Inicio</ion-button>
       <ion-button>Explora</ion-button>
       <ion-button>Mis libros</ion-button>
-      <ion-button>Perfil</ion-button>
+      <ion-button routerLink="/user-profile">Perfil</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>

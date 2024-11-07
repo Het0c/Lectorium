@@ -14,7 +14,11 @@ export class LoginPage {
     password: ''
   };
 
-  constructor(private navCtrl: NavController, private authService: AuthService, private alertCtrl: AlertController) {}
+  constructor(
+    private navCtrl: NavController, 
+    private authService: AuthService, 
+    private alertCtrl: AlertController
+  ) {}
 
   async onLogin() {
     this.authService.login(this.credentials.username, this.credentials.password).subscribe(
@@ -33,6 +37,15 @@ export class LoginPage {
           });
           await alert.present();
         }
+      },
+      async (error) => {
+        console.error('Error de Login', error); // Depuración
+        const alert = await this.alertCtrl.create({
+          header: 'Error',
+          message: `No se pudo iniciar sesión. ${error.error?.error || 'Por favor, verifica tus credenciales.'}`,
+          buttons: ['OK']
+        });
+        await alert.present();
       }
     );
   }

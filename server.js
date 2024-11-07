@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const sequelize = new Sequelize('lectorium', 'root', 'jDXgT61EhWinGAx0Wy2H', { //Canela17_
+const sequelize = new Sequelize('lectorium', 'root', 'jDXgT61EhWinGAx0Wy2H', {
   host: 'localhost',
   dialect: 'mysql'
 });
@@ -20,7 +20,7 @@ sequelize.authenticate()
 const User = sequelize.define('user', {
   email: { type: Sequelize.STRING, unique: true },
   password: { type: Sequelize.STRING },
-  resetCode: { type: Sequelize.STRING } // Añade este campo
+  resetCode: { type: Sequelize.STRING }
 }, {
   timestamps: false
 });
@@ -28,7 +28,6 @@ const User = sequelize.define('user', {
 sequelize.sync()
   .then(() => console.log('Users table created'));
 
-// Configurar el transportador de nodemailer
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -36,73 +35,89 @@ const transporter = nodemailer.createTransport({
     pass: 'imxm mmng msdr qdxi'
   }
 });
+
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
   User.findOne({ where: { email, password } })
-    .then(user => {
-      if (user) {
-        res.json(user);
+    .then(email => {
+      if (email) {
+        res.json(email);
       } else {
-        res.status(400).json({ error: 'Invalid credentials' });
+        res.status(400).json({ error: 'Invalid credentials. Please check your email and password.' });
       }
     })
-    .catch(err => res.status(500).json({ error: err }));
+    .catch(err => {
+      console.error('Error in /login:', err);
+      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+    });
 });
+
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
   User.create({ email, password })
-    .then(user => res.json(user)) // Debería retornar el usuario creado
-    .catch(err => res.status(500).json({ error: err }));
+    .then(user => res.json(user))
+    .catch(err => {
+      console.error('Error in /register:', err);
+      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+    });
 });
-// RX8REVJM3GUAPWYGU1NMHWUX
+
 app.post('/reset-password', (req, res) => {
   const { email } = req.body;
   const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
   User.update({ resetCode }, { where: { email } })
     .then(result => {
       if (result[0] === 0) {
-        res.status(404).json({ error: 'Usuario no encontrado' });
+        res.status(404).json({ error: 'User not found' });
       } else {
         const mailOptions = {
           from: 'RecuperacionLectorium@gmail.com',
           to: email,
-          subject: 'Código de Verificación para Restablecer Contraseña',
-          text: `Tu código de verificación es: ${resetCode}`
+          subject: 'Password Reset Verification Code',
+          text: `Your verification code is: ${resetCode}`
         };
         transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
-            console.error('Error al enviar el correo:', error); // Log del error
-            res.status(500).json({ error: 'Error al enviar el correo' });
+            console.error('Error sending email:', error);
+            res.status(500).json({ error: 'Error sending email' });
           } else {
-            console.log('Correo enviado:', info.response); // Log del éxito
-            res.json({ message: 'Correo de restablecimiento enviado' });
+            console.log('Email sent:', info.response);
+            res.json({ message: 'Password reset email sent' });
           }
         });
       }
     })
     .catch(err => {
-      console.error('Error en reset-password:', err); // Log del error
-      res.status(500).json({ error: err });
+      console.error('Error in /reset-password:', err);
+      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
     });
 });
+
 app.post('/verify-code', (req, res) => {
   const { email, code } = req.body;
   User.findOne({ where: { email, resetCode: code } })
     .then(user => {
       if (user) {
-        res.json({ message: 'Código verificado' });
+        res.json({ message: 'Code verified' });
       } else {
-        res.status(400).json({ error: 'Código inválido' });
+        res.status(400).json({ error: 'Invalid code' });
       }
     })
-    .catch(err => res.status(500).json({ error: err }));
+    .catch(err => {
+      console.error('Error in /verify-code:', err);
+      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+    });
 });
 
 app.post('/update-password', (req, res) => {
   const { email, newPassword } = req.body;
-  User.update({ password: newPassword, resetCode: null }, { where: { email } }) // Restablece resetCode a null
-    .then(() => res.json({ message: 'Contraseña actualizada' }))
-    .catch(err => res.status(500).json({ error: err }));
+  User.update({ password: newPassword, resetCode: null }, { where: { email } })
+    .then(() => res.json({ message: 'Password updated' }))
+    .catch(err => {
+      console.error('Error in /update-password:', err);
+      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+    });
 });
 
 app.listen(3001, () => console.log('Server running on port 3001'));
+
