@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/login"></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">Sign up for a free account</ion-title>
+    <ion-title class="ion-text-center">Crea tu cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,30 +15,33 @@
           <ion-card-content>
             <form (ngSubmit)="onRegister()">
               <ion-item class="input-item">
-                <ion-label position="floating">Email</ion-label>
+                <ion-icon name="mail-outline" slot="start"></ion-icon>
+                <ion-label position="floating">Correo</ion-label>
                 <ion-input [(ngModel)]="credentials.username" name="username" type="email" required></ion-input>
               </ion-item>
               <ion-item class="input-item">
-                <ion-label position="floating">Password</ion-label>
+                <ion-icon name="key-outline" slot="start"></ion-icon>
+                <ion-label position="floating">Contraseña</ion-label>
                 <ion-input [(ngModel)]="credentials.password" name="password" type="password" required></ion-input>
               </ion-item>
               <ion-item class="input-item">
-                <ion-label position="floating">Confirm password</ion-label>
+                <ion-icon name="key-outline" slot="start"></ion-icon>
+                <ion-label position="floating">Confirma tu contraseña</ion-label>
                 <ion-input [(ngModel)]="credentials.confirmPassword" name="confirmPassword" type="password" required></ion-input>
               </ion-item>
               <ion-item lines="none">
                 <ion-checkbox [(ngModel)]="credentials.agreeToTerms" name="agreeToTerms" slot="start" required></ion-checkbox>
                 <ion-label>
-                  I agree to the terms of service, privacy policy...
+                  Estoy de acuerdo con los terminos de servicio y la politica de privacidad.
                 </ion-label>
               </ion-item>
-              <p class="terms-text">By checking this box, you confirm that you have read and accept our terms.</p>
+              <p class="terms-text">Al hacer click en esta casilla, confirmas que has leido y aceptado nuestros terminos.</p>
               <ion-row class="button-row">
                 <ion-col size="6">
-                  <ion-button expand="full" class="signup-button" type="submit">Sign Up</ion-button>
+                  <ion-button expand="full" class="signup-button" type="submit">Crear cuenta</ion-button>
                 </ion-col>
                 <ion-col size="6">
-                  <ion-button expand="full" color="light" (click)="goToLogin()">Log In</ion-button>
+                  <ion-button expand="full" color="light" class="register-button" (click)="goToLogin()">¿Ya tienes una cuenta? Inicia Sesión</ion-button>
                 </ion-col>
               </ion-row>
             </form>

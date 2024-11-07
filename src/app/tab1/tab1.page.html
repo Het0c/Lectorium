@@ -1,14 +1,22 @@
 <ion-header>
   <ion-toolbar>
+<<<<<<< HEAD
     <ion-searchbar placeholder="Find your next book" [(ngModel)]="searchQuery" (ionInput)="onSearchChange($event)"></ion-searchbar>
+=======
+    <div class="search-container">
+      <ion-searchbar placeholder="Find your next book" [(ngModel)]="searchQuery" (ionInput)="onSearchChange($event)"></ion-searchbar>
+    <ion-button shape="round" class="cam-button"><ion-icon class="large-icon" name="barcode-outline"></ion-icon></ion-button>
+    </div>
+>>>>>>> 3c52276b39fb5c3b563e75a4d58b0b72c60301a4
   </ion-toolbar>
+
+  
 </ion-header>
 
 <ion-content>
   <div class="tabs">
     <span class="tab active">Para ti</span>
     <span class="tab">Los más populares</span>
-    <span class="tab">Colecciones</span>
   </div>
 
   <div class="section" *ngIf="searchResults.length > 0">

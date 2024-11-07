@@ -2,7 +2,10 @@
     height: 100%;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #002b70 0%, #000000 100%);
+    background-image: url('/assets/fondo-hoja-antigua.jpg'); 
+    background-size: cover;
+    background-position: center; /* Centra la imagen en el grid */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
   }
   
   ion-card {
@@ -13,10 +16,11 @@
     margin-top: 100px;
   }
   
+
   .login-icon {
     font-size: 5rem;
     color: #000000;
-    animation: pulse 5s infinite;
+    // animation: pulse 5s infinite;
   }
   
   .login-button {
@@ -54,26 +58,26 @@
   .login-card {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
-    background-color: #fff;
+    background-color: #fff2b9;
   }
   
   .input-item {
     margin-bottom: 25px;
+    --background: #fff2b9;
   }
   
   .login-button {
     background: linear-gradient(135deg, #6e45e2, #88d3ce);
-    border-radius: 5px;
+    border-radius: 4px;
     border: 2px solid #6862ff;
-    box-shadow: 0 5px 15px rgba(110, 69, 226, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   }
   
   .register-button {
-    background: #fff;
-    color: #ffffff;
-    border-radius: 5px;
+    background: linear-gradient(135deg, #6e45e2, #88d3ce);
+    border-radius: 4px;
     border: 2px solid #6e45e2;
     margin-top: 10px;
-    box-shadow: 0 5px 15px rgba(110, 69, 226, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   }
   
