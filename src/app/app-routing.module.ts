@@ -1,8 +1,7 @@
+
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { IngresadoGuard } from './guards/ingresado.guard';
-import { BookSearchComponent } from './book-search/book-search.component';
-import { BookListComponent } from './book-list/book-list.component'; // Importa el componente
 
 
 const routes: Routes = [
@@ -12,13 +11,17 @@ const routes: Routes = [
     { path: 'forgot-password', loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule) },
     { path: 'verify-code', loadChildren: () => import('./verify-code/verify-code.module').then(m => m.VerifyCodePageModule) },
     { path: 'update-password', loadChildren: () => import('./update-password/update-password.module').then(m => m.UpdatePasswordPageModule) },
+
+
+    { path: 'book-preview', loadChildren: () => import('./book-preview/book-preview.module').then(m => m.BookPreviewPageModule) },
+
+
     {
         path: '',
         loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
         canActivate: [IngresadoGuard]
     },
-    { path: 'book-search', component: BookSearchComponent },
-    { path: 'book-list', component: BookListComponent }, // Añade la ruta para book-list
+
     { path: 'not-found', loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundPageModule) },
     { path: '**', redirectTo: 'not-found' },
   {
@@ -36,17 +39,15 @@ const routes: Routes = [
   {
     path: 'tab2',
     loadChildren: () => import('./tab2/tab2.module').then( m => m.Tab2PageModule)
-  },  {
-    path: 'libros-ciencia',
-    loadChildren: () => import('./libros-ciencia/libros-ciencia.module').then( m => m.LibrosCienciaPageModule)
   },
-
-
-
-
-
-  
-
+  {
+    path: 'book-preview',
+    loadChildren: () => import('./book-preview/book-preview.module').then( m => m.BookPreviewPageModule)
+  },
+  {
+    path: 'tab4',
+    loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+  },
 ];
 
 @NgModule({

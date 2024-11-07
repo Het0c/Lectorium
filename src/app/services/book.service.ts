@@ -1,33 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { AlertController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
-
+export class GoogleBooksService {
   private apiUrl = 'https://www.googleapis.com/books/v1/volumes';
 
-  constructor(private http: HttpClient, private alertController: AlertController) { }
+  constructor(private http: HttpClient) { }
 
-  searchBooks(query: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}?q=${query}`)
-      .pipe(
-        catchError(error => this.handleError(error))
-      );
-  }
-
-  private async handleError(error: HttpErrorResponse) {
-    const alert = await this.alertController.create({
-      header: 'Error de Conexión',
-      message: 'No se pudo conectar con la API. Por favor, intenta de nuevo más tarde.',
-      buttons: ['OK']
-    });
-    await alert.present();
-
-    return throwError('Algo salió mal; por favor, intenta de nuevo más tarde.');
+  searchBooks(query: string): Observable<any[]> {
+    // Si la consulta es un ISBN (números o puede incluir guiones), busca por ISBN
+    const isIsbn = /^[0-9-]+$/.test(query);
+    const searchQuery = isIsbn ? `isbn:${query}` : query;
+    const url = `${this.apiUrl}?q=${searchQuery}`;
+    return this.http.get<any>(url).pipe(
+      map(response => response.items || [])
+    );
   }
 }

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ book?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="book">
+    <img [src]="book.thumbnail" *ngIf="book.thumbnail" />
+    <ion-card-content>
+      <h2>{{ book.title }}</h2>
+      <h3>Autor: {{ book.authors?.join(', ') }}</h3>
+      <p>{{ book.description }}</p>  <!-- Mostrar toda la descripción aquí -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const sequelize = new Sequelize('lectorium', 'root', 'Canela17_', {
+const sequelize = new Sequelize('lectorium', 'root', 'jDXgT61EhWinGAx0Wy2H', { //Canela17_
   host: 'localhost',
   dialect: 'mysql'
 });
