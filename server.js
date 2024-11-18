@@ -43,12 +43,12 @@ app.post('/login', (req, res) => {
       if (email) {
         res.json(email);
       } else {
-        res.status(400).json({ error: 'Invalid credentials. Please check your email and password.' });
+        res.status(400).json({ error: ' Credenciales incorrectas.' });
       }
     })
     .catch(err => {
       console.error('Error in /login:', err);
-      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+      res.status(500).json({ error: ' Tiempo de espera agotado. Intente más tarde.' });
     });
 });
 
@@ -58,7 +58,7 @@ app.post('/register', (req, res) => {
     .then(user => res.json(user))
     .catch(err => {
       console.error('Error in /register:', err);
-      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+      res.status(500).json({ error: 'Tiempo de espera agotado. Intente más tarde.' });
     });
 });
 
@@ -73,23 +73,23 @@ app.post('/reset-password', (req, res) => {
         const mailOptions = {
           from: 'RecuperacionLectorium@gmail.com',
           to: email,
-          subject: 'Password Reset Verification Code',
-          text: `Your verification code is: ${resetCode}`
+          subject: 'Codigo de verificacion reinicio de contraseña',
+          text: `Tu codigo de verificacion es: ${resetCode}`
         };
         transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
-            console.error('Error sending email:', error);
-            res.status(500).json({ error: 'Error sending email' });
+            console.error('Error enviando Email:', error);
+            res.status(500).json({ error: 'Error enviando Email:' });
           } else {
             console.log('Email sent:', info.response);
-            res.json({ message: 'Password reset email sent' });
+            res.json({ message: 'email de cambio de contraseña enviado' });
           }
         });
-      }
+      }    
     })
     .catch(err => {
       console.error('Error in /reset-password:', err);
-      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+      res.status(500).json({ error: 'Tiempo de espera agotado. Intente más tarde.' });
     });
 });
 
@@ -98,14 +98,14 @@ app.post('/verify-code', (req, res) => {
   User.findOne({ where: { email, resetCode: code } })
     .then(user => {
       if (user) {
-        res.json({ message: 'Code verified' });
+        res.json({ message: 'Codigo verificado' });
       } else {
         res.status(400).json({ error: 'Invalid code' });
       }
     })
     .catch(err => {
       console.error('Error in /verify-code:', err);
-      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+      res.status(500).json({ error: 'Tiempo de espera agotado. Intente más tarde.' });
     });
 });
 
@@ -115,7 +115,7 @@ app.post('/update-password', (req, res) => {
     .then(() => res.json({ message: 'Password updated' }))
     .catch(err => {
       console.error('Error in /update-password:', err);
-      res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+      res.status(500).json({ error: 'Tiempo de espera agotado. Intente más tarde.' });
     });
 });
 

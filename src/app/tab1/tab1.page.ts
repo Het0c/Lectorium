@@ -30,12 +30,12 @@ export class Tab1Page implements OnInit {
     {
       title: 'The Power of Habit',
       author: 'Charles Duhigg',
-      image: 'assets/images/power_of_habit.jpg'
+      image: 'https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/625428ec261ac384603ebab3_609ab57f2f76e83b56daaf5c_9788418395185_web.jpeg'
     },
     {
       title: 'The Lean Startup',
       author: 'Eric Ries',
-      image: 'assets/images/lean_startup.jpg'
+      image: 'https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/625428ec261ac384603ebab3_609ab57f2f76e83b56daaf5c_9788418395185_web.jpeg'
     },
   ];
 

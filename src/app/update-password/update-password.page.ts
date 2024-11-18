@@ -10,23 +10,28 @@ import { AlertController, NavController } from '@ionic/angular';
 export class UpdatePasswordPage {
   newPassword: string = '';
 
-  constructor(private authService: AuthService, private alertController: AlertController, private navCtrl: NavController) {}
+  constructor(
+    private authService: AuthService, 
+    private alertController: AlertController, 
+    private navCtrl: NavController
+  ) {}
 
   async onSubmit() {
     const email = this.authService.userEmail; // Utiliza el correo almacenado
-    if (this.newPassword) {
-      this.authService.updatePassword(email, this.newPassword).subscribe(
-        async () => {
-          await this.showAlert('Contraseña Actualizada', 'Tu contraseña ha sido actualizada correctamente.');
-          this.navCtrl.navigateForward('/login'); // Navega a la página de inicio de sesión
-        },
-        async error => {
-          await this.showAlert('Error', 'No se pudo actualizar la contraseña. Por favor, inténtalo de nuevo.');
-        }
-      );
-    } else {
-      console.log('El campo de nueva contraseña es requerido');
+    if (!this.newPassword || this.newPassword.length < 8) {
+      await this.showAlert('Error', 'La contraseña debe tener al menos 8 caracteres.');
+      return;
     }
+
+    this.authService.updatePassword(email, this.newPassword).subscribe(
+      async () => {
+        await this.showAlert('Contraseña Actualizada', 'Tu contraseña ha sido actualizada correctamente.');
+        this.navCtrl.navigateForward('/login'); // Navega a la página de inicio de sesión
+      },
+      async error => {
+        await this.showAlert('Error', 'No se pudo actualizar la contraseña. Por favor, inténtalo de nuevo.');
+      }
+    );
   }
 
   async showAlert(header: string, message: string) {
