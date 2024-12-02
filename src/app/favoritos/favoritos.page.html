@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let libro of libros">
+      <ion-label>{{ libro.titulo }}</ion-label>
+      <ion-button fill="clear" (click)="toggleFavorito(libro.id)">
+        <ion-icon slot="icon-only" name="star" *ngIf="esFavorito(libro.id)"></ion-icon>
+        <ion-icon slot="icon-only" name="star-outline" *ngIf="!esFavorito(libro.id)"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
