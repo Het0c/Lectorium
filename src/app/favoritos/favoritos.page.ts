@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FavoritosService } from '../favoritos.service'; //Revisar la ruta de importación :(
+import { FavoritosService } from '../services/favoritos.service'; 
 
 @Component({
   selector: 'app-favoritos',
@@ -7,14 +7,7 @@ import { FavoritosService } from '../favoritos.service'; //Revisar la ruta de im
   styleUrls: ['./favoritos.page.scss'],
 })
 export class FavoritosPage implements OnInit {
-
-  libros = [
-    { id: 1, titulo: 'Libro 1' },
-    { id: 2, titulo: 'Libro 2' },
-    { id: 3, titulo: 'Libro 3' },
-  ];
-  favoritos: number[] = [];
-  usuarioId = 1; // Este ID debe obtenerse de la sesión del usuario ;)
+  favoritos: any[] = []; 
 
   constructor(private favoritosService: FavoritosService) {}
 
@@ -23,24 +16,8 @@ export class FavoritosPage implements OnInit {
   }
 
   cargarFavoritos() {
-    this.favoritosService.obtenerFavoritos(this.usuarioId).subscribe((data: any[]) => {
-      this.favoritos = data.map(fav => fav.id);
+    this.favoritosService.getFavoritos().subscribe((data: any) => {
+      this.favoritos = data;
     });
-  }
-
-  toggleFavorito(libroId: number) {
-    if (this.favoritos.includes(libroId)) {
-      this.favoritosService.desmarcarFavorito(this.usuarioId, libroId).subscribe(() => {
-        this.favoritos = this.favoritos.filter(id => id !== libroId);
-      });
-    } else {
-      this.favoritosService.marcarFavorito(this.usuarioId, libroId).subscribe(() => {
-        this.favoritos.push(libroId);
-      });
-    }
-  }
-
-  esFavorito(libroId: number): boolean {
-    return this.favoritos.includes(libroId);
   }
 }
