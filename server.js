@@ -8,8 +8,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const sequelize = new Sequelize('lectorium', 'root', 'jDXgT61EhWinGAx0Wy2H', {
-  host: 'localhost',
+const sequelize = new Sequelize('bsbjtagtdfmhpwwramwr', 'u1ike6kh4o91gog0', 'r0lVfgQJkzsT161Db2Z5', {
+  host: 'bsbjtagtdfmhpwwramwr-mysql.services.clever-cloud.com',
   dialect: 'mysql'
 });
 
