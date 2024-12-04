@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3001';
+  private apiUrl = 'https://nodejs-serverless-function-express-jcjnmm41v.vercel.app';
   public userEmail: string = ''; // Propiedad para almacenar el correo
 
   constructor(private http: HttpClient) { }
