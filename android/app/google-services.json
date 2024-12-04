@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "586829762440",
+    "project_id": "lectorium-cc7ec",
+    "storage_bucket": "lectorium-cc7ec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586829762440:android:3dd489ab1740096bb1343d",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKRjJXaX8alSVDEZJGWAxg4fQ1BolSZmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
