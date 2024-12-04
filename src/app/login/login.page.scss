@@ -1,83 +1,122 @@
+/* Fondo y cuadrícula */
 .login-grid {
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    background-image: url('/assets/fondo-hoja-antigua.jpg'); 
-    background-size: cover;
-    background-position: center; /* Centra la imagen en el grid */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-  }
-  
-  ion-card {
-    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    animation: fadeIn 0.6s ease-in-out;
-    justify-content: center;
-    margin-top: 100px;
-  }
-  
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: #E1F5FE;
+}
 
-  .login-icon {
-    font-size: 5rem;
-    color: #000000;
-    // animation: pulse 5s infinite;
+.login-background {
+  background: url('/assets/img/fondo-geometrico.jpg') no-repeat center center / cover;
+}
+
+/* Card */
+ion-card {
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  animation: fadeIn 0.6s ease-in-out;
+  padding: 30px 20px;
+}
+
+.login-icon {
+  font-size: 4rem;
+  color: #42A5F5;
+}
+
+/* Animación fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .login-button {
-    margin-top: 20px;
-    border-radius: 8px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  .login-background {
-    background: url('/assets/img/fondo-geometrico.jpg') no-repeat center center / cover;
-  }
-  
-  .login-card {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    background-color: #fff2b9;
-  }
-  
-  .input-item {
-    margin-bottom: 25px;
-    --background: #fff2b9;
-  }
-  
-  .login-button {
-    background: linear-gradient(135deg, #6e45e2, #88d3ce);
-    border-radius: 4px;
-    border: 2px solid #6862ff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  }
-  
-  .register-button {
-    background: linear-gradient(135deg, #6e45e2, #88d3ce);
-    border-radius: 4px;
-    border: 2px solid #6e45e2;
-    margin-top: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  }
-  
+}
+
+/* Estilo de los input */
+.input-item {
+  margin-bottom: 20px;
+  --background: transparent;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --border-radius: 10px;
+  --height: 50px;
+}
+
+ion-input {
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --height: 50px;
+  --font-size: 16px;
+  --color: #0D47A1;
+  --background: #ffffff;
+  --border-radius: 10px;
+  --box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Placeholder que se convierte en label flotante */
+ion-input::part(placeholder) {
+  color: #0D47A1;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* Foco en los inputs */
+ion-input:focus {
+  --box-shadow: 0px 0px 15px rgba(66, 165, 245, 0.7);
+  --border-radius: 10px;
+  --border-color: #42A5F5;
+}
+
+/* Estilo de los botones */
+.login-button {
+  --background: #42A5F5;
+  border-radius: 8px;
+  border: 2px solid #1E3A8A;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+}
+
+.register-button {
+  --background: #42A5F5;
+  border-radius: 8px;
+  border: 2px solid #1E3A8A;
+  margin-top: 10px;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Enlaces de acción */
+.auth-links {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgot-password-link {
+  margin-top: 10px;
+}
+
+.forgot-password-link a {
+  color: #0D47A1;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Sombra de los iconos */
+ion-icon {
+  color: #0D47A1;
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+/* Ocultar bordes */
+ion-item {
+  --border-color: transparent;
+  --border-width: 0;
+  --background: transparent;
+  --padding: 0;
+}

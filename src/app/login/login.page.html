@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar color="light">
-    <ion-title class="ion-text-center">Inicio de Sesión</ion-title>
-  </ion-toolbar>
+    <ion-title class="ion-text-center">¡Bienvenido!</ion-title>  </ion-toolbar>
 </ion-header>
 
 <ion-content class="login-background">
@@ -14,24 +13,35 @@
               <ion-icon name="person-circle-outline" class="login-icon"></ion-icon>
             </ion-card-title>
           </ion-card-header>
+
           <ion-card-content>
             <form (ngSubmit)="onLogin()">
+              
+              <!-- Correo -->
               <ion-item class="input-item">
                 <ion-icon name="mail-outline" slot="start"></ion-icon>
-                <ion-label position="floating">Correo</ion-label>
-                <ion-input [(ngModel)]="credentials.username" name="email" type="text" required></ion-input>
+                <ion-input [(ngModel)]="credentials.username" name="email" type="text" placeholder="Correo" required></ion-input>
               </ion-item>
+
+              <!-- Contraseña -->
               <ion-item class="input-item">
                 <ion-icon name="key-outline" slot="start"></ion-icon>
-                <ion-label position="floating">Contraseña</ion-label>
-                <ion-input [(ngModel)]="credentials.password" name="password" type="password" required></ion-input>
+                <ion-input [(ngModel)]="credentials.password" name="password" type="password" placeholder="Contraseña" required></ion-input>
               </ion-item>
+
+              <!-- Botón Iniciar sesión -->
               <ion-button expand="full" class="login-button" type="submit">Iniciar Sesión</ion-button>
+              
             </form>
-            <ion-button expand="full" class="register-button" (click)="goToRegistro()">¿No tienes cuenta? Regístrate</ion-button>
-            <div class="forgot-password-link">
-              <a (click)="goToForgotPassword()">¿Olvidaste tu contraseña?</a>
+
+            <!-- Registro y Olvidé Contraseña -->
+            <div class="auth-links">
+              <ion-button expand="full" class="register-button" (click)="goToRegistro()">¿No tienes cuenta? Regístrate</ion-button>
+              <div class="forgot-password-link">
+                <a (click)="goToForgotPassword()">¿Olvidaste tu contraseña?</a>
+              </div>
             </div>
+
           </ion-card-content>
         </ion-card>
       </ion-col>

@@ -1,22 +1,30 @@
 <ion-header>
   <ion-toolbar>
-
     <div class="search-container">
-      <ion-searchbar placeholder="Encuentra tu proximo libro" [(ngModel)]="searchQuery" (ionInput)="onSearchChange($event)"></ion-searchbar>
-      <ion-button shape="round" class="cam-button"><ion-icon class="large-icon" name="barcode-outline"></ion-icon></ion-button>
+      <!-- Barra de búsqueda -->
+      <ion-searchbar 
+        placeholder="Encuentra tu próximo libro" 
+        [(ngModel)]="searchQuery" 
+        (ionInput)="onSearchChange($event)"
+        class="styled-searchbar">
+      </ion-searchbar>
+      
+      <!-- Botón de cámara -->
+      <ion-button shape="round" class="cam-button">
+        <ion-icon class="large-icon" name="barcode-outline"></ion-icon>
+      </ion-button>
     </div>
-
   </ion-toolbar>
-
-  
 </ion-header>
 
 <ion-content class="content-background">
+  <!-- Tabs -->
   <div class="tabs">
     <span class="tab active">Para ti</span>
     <span class="tab">Los más populares</span>
   </div>
 
+  <!-- Resultados de la búsqueda -->
   <div class="section" *ngIf="searchResults.length > 0">
     <h2>Resultados de la búsqueda</h2>
     <ion-grid>
@@ -27,7 +35,7 @@
             <ion-card-content>
               <h3>{{ book.title }}</h3>
               <p>{{ book.authors?.join(', ') }}</p>
-              <p>{{ book.description }}</p> 
+              <p>{{ book.description }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -35,6 +43,7 @@
     </ion-grid>
   </div>
 
+  <!-- Personalizado -->
   <div class="section">
     <h2>Personalizado para ti</h2>
     <ion-grid>
@@ -50,9 +59,8 @@
         </ion-col>
       </ion-row>
     </ion-grid>
- 
 
-  
+    <!-- Destacados -->
     <h2>Destacados en negocios y liderazgo</h2>
     <ion-grid>
       <ion-row>

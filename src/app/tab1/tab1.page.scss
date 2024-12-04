@@ -1,146 +1,112 @@
-// /* Estilo general para el contenido */
-// #main-content {
-//     --background: #f4f4f9; /* Fondo claro y agradable */
-//   }
-  
-//   /* Estilo para las imágenes */
-//   .horizontal-image {
-//     width: 100%;
-//     border-radius: 10px;
-//     margin: 10px 0;
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   }
-  
-//   /* Estilo para las categorías */
-//   ion-card {
-//     border-radius: 15px;
-//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-//     transition: transform 0.3s ease-in-out;
-//   }
-  
-//   ion-card:hover {
-//     transform: scale(1.05);
-//   }
-  
-//   ion-card-title {
-//     font-family: 'Roboto', sans-serif;
-//     font-size: 1.1em;
-//     color: #333;
-//   }
-  
-//   ion-img {
-//     border-top-left-radius: 15px;
-//     border-top-right-radius: 15px;
-//   }
-  
-//   /* Estilo para el botón flotante */
-//   ion-fab-button {
-//     --background: #007bff;
-//   }
-  
-//   ion-fab-button ion-img {
-//     width: 40px;
-//     height: 40px;
-//   }
-  
+/* Barra de herramientas */
 ion-toolbar {
-    --background: #ffffff;
-  }
-  
-  .content-background{
-    background-image: url('/assets/papel.jpg');
-  }
+  --background: #E1F5FE;
+  --color: #0D47A1;
+}
 
-  ion-searchbar {
-    --background: #f1f1f1;
-    --color: #000;
-    margin: 8px;
-    border-radius: 10px;
-    margin-top: 20px;
-    flex: 1;
-  }
+/* Fondo */
+.content-background {
+  background-color: #ffffff;
+}
 
-  .large-icon{
-    color :black;
-    font-size: 30px;
-  }
-  
-  .search-container { 
-    display: flex; 
-    align-items: center; 
-    width: 100%;
-  }
+/* Barra de búsqueda */
+.styled-searchbar {
+  --background: #ffffff;
+  --placeholder-color: #B0BEC5;
+  --color: #0D47A1;
+  --box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
 
-  .cam-button{
-    float: right;
-    margin-right: 15px;
-  }
+.search-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
 
-  .tabs {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    background-color: #ffffff;
-    font-weight: 500;
-    
-  
-    .tab {
-      padding: 5px;
-      color: #888;
-    }
-  
-    .active {
-      color: #000;
-      border-bottom: 2px solid #000;
-    }
-  }
-  
-  .section {
-    padding: 10px;
-    background-image: url('/assets/papel.jpg');
-    background-size: cover;
-    background-position: center; /* Centra la imagen en el grid */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-  
-    h2 {
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-  
-    ion-card {
-      border-radius: 10px;
-      overflow: hidden;
-  
-      img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-      }
-  
-      ion-card-content {
-        h3 {
-          font-size: 14px;
-          font-weight: 600;
-        }
-  
-        p {
-          font-size: 12px;
-          color: #666;
-        }
-      }
-    }
-  }
-  
-  ion-footer {
-    ion-toolbar {
-      --background: #ffffff;
-      display: flex;
-      justify-content: space-around;
-    }
-  
-    ion-button {
-      color: #000;
-      font-size: 14px;
-    }
-  }
-  
+.large-icon {
+  color: #42A5F5;
+  font-size: 24px;
+}
+
+.cam-button {
+  background-color: #42A5F5;
+  --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #E1F5FE;
+  color: #0D47A1;
+  font-weight: bold;
+}
+
+.tab {
+  padding: 5px;
+}
+
+.tab.active {
+  color: #42A5F5;
+  border-bottom: 2px solid #42A5F5;
+}
+
+/* Secciones */
+.section {
+  padding: 20px;
+  background-color: #FAFAFA;
+}
+
+h2 {
+  color: #0D47A1;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Tarjetas */
+ion-card {
+  border-radius: 10px;
+  overflow: hidden;
+  --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ion-card:hover {
+  transform: scale(1.03);
+}
+
+ion-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+ion-card-content {
+  --background: #ffffff;
+  color: #0D47A1;
+}
+
+ion-card-content h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+ion-card-content p {
+  font-size: 12px;
+  color: #546E7A;
+}
+
+/* Footer */
+ion-footer ion-toolbar {
+  --background: #E1F5FE;
+}
+
+ion-footer ion-button {
+  color: #0D47A1;
+}
+
+ion-footer ion-button:hover {
+  color: #42A5F5;
+}
