@@ -119,5 +119,52 @@ app.post('/update-password', (req, res) => {
     });
 });
 
-app.listen(3001, () => console.log('Server running on port 3001'));
 
+
+const Author = sequelize.define('author', {
+  name: { type: Sequelize.STRING },
+  bio: { type: Sequelize.TEXT },
+}, {
+  timestamps: false
+});
+
+const Book = sequelize.define('book', {
+  title: { type: Sequelize.STRING },
+  author: { type: Sequelize.STRING },
+  cover: { type: Sequelize.STRING },
+}, {
+  timestamps: false
+});
+
+const UserBook = sequelize.define('user_book', {
+  user_id: { type: Sequelize.INTEGER },
+  book_id: { type: Sequelize.INTEGER },
+  status: { type: Sequelize.ENUM('reading', 'completed', 'wishlist') }
+}, {
+  timestamps: false
+});
+
+sequelize.sync()
+  .then(() => console.log('Tables created'));
+
+app.get('/user/:id', (req, res) => {
+  const userId = req.params.id;
+  User.findByPk(userId)
+    .then(user => res.json(user))
+    .catch(err => {
+      console.error('Error in /user/:id:', err);
+      res.status(500).json({ error: 'Tiempo de espera agotado. Intente más tarde.' });
+    });
+});
+
+app.get('/user/:id/favorite-books', (req, res) => {
+  const userId = req.params.id;
+  UserBook.findAll({ where: { user_id: userId, status: 'wishlist' }, include: [Book] })
+    .then(userBooks => res.json(userBooks.map(ub => ub.book)))
+    .catch(err => {
+      console.error('Error in /user/:id/favorite-books:', err);
+      res.status(500).json({ error: 'Tiempo de espera agotado. Intente más tarde.' });
+    });
+});
+
+app.listen(3001, () => console.log('Server running on port 3001'));

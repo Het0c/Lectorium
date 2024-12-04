@@ -1,5 +1,5 @@
 {
-  "name": "Summafiry",
+  "name": "Lectorium",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -11,8 +11,11 @@
     "test": "ng test",
     "lint": "ng lint"
   },
+
+  
   "private": true,
   "dependencies": {
+    
     "@angular/animations": "^18.0.0",
     "@angular/common": "^18.2.10",
     "@angular/compiler": "^18.0.0",
@@ -77,4 +80,6 @@
     "typescript": "~5.4.0"
   },
   "description": "An Ionic project"
+
+  
 }
