@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } from '@capacitor/push-notifications';
 
 @Component({
   selector: 'app-tabs',
@@ -10,3 +11,4 @@ export class TabsPage {
   constructor() {}
 
 }
+
