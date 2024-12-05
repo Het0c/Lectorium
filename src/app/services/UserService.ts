@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private apiUrl = 'https://nodejs-serverless-function-express-jcjnmm41v.vercel.app'; 
+  private apiUrl = 'https://server-lectorium.onrender.com'; 
 
   constructor(private http: HttpClient) {}
 
