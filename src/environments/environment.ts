@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
+  apiUrl: 'https://server-lectorium.onrender.com' 
+ , 
   firebaseConfig: {
     apiKey: "AIzaSyAftcwvphVKY8wkvPl9wEi-_A-ADnSKHOY",
     authDomain: "lectorium-9aa8d.firebaseapp.com",

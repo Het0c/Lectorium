@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FavoritosService {
-  private apiUrl = 'https://tuservidor.com/api'; // Cambia por la URL de tu API
+  private apiUrl = '/api';
 
   constructor(private http: HttpClient) {}
 

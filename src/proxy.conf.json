@@ -1,0 +1,11 @@
+{
+    "/api": {
+      "target": "https://server-lectorium.onrender.com",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
+  

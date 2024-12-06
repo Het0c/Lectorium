@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private apiUrl = 'https://server-lectorium.onrender.com'; 
+  private apiUrl = '/api';  // Cambiar la URL base para usar el proxy
 
   constructor(private http: HttpClient) {}
 

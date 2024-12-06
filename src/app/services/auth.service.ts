@@ -1,23 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://server-lectorium.onrender.com';
-  public userEmail: string = ''; // Propiedad para almacenar el correo
 
-  constructor(private http: HttpClient) { }
+  private apiUrl = environment.apiUrl;  // Usar la URL del entorno
+
+  constructor(private http: HttpClient) {}
+
+  userEmail: string ="";  // Define la propiedad userEmail
+
+  login(email: string, password: string): Observable<any> {
+    this.userEmail = email;  // Asigna el valor a userEmail
+    return this.http.post(`${this.apiUrl}/login`, { email, password })
+      .pipe(
+        catchError(this.handleError)  // Manejo de errores
+      );
+  }
+
+
+
 
   register(email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, { email, password });
   }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email, password });
-  }
 
   sendResetPasswordEmail(email: string): Observable<any> {
     this.userEmail = email; // Almacena el correo
@@ -45,5 +57,20 @@ export class AuthService {
   getSession(): { email: string, password: string } | null {
     const creds = localStorage.getItem('userCredentials');
     return creds ? JSON.parse(creds) : null;
+  }
+
+
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Error del lado del cliente
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Error del lado del servidor
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }
