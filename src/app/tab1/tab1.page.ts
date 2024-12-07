@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleBooksService } from '../services/book.service';
-import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } from '@capacitor/push-notifications';
 import { NavController } from '@ionic/angular';
-import { IonicModule } from '@ionic/angular';
-import { Capacitor } from '@capacitor/core';
 
- @Component({
+@Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-
 export class Tab1Page implements OnInit {
-
   searchQuery: string = '';
   searchResults: any[] = [];
 
@@ -45,24 +40,30 @@ export class Tab1Page implements OnInit {
   constructor(private googleBooksService: GoogleBooksService, private navCtrl: NavController) {}
 
   ngOnInit() {}
-
   onSearchChange(event: any) {
     const query = this.searchQuery.toLowerCase();
     if (query) {
-      this.googleBooksService.searchBooks(query).subscribe(books => {
-        this.searchResults = books.map(book => ({
-          title: book.volumeInfo.title,
-          authors: book.volumeInfo.authors,
-          description: this.shortenDescription(book.volumeInfo.description, 100),  // Truncar la descripción aquí
-          fullDescription: book.volumeInfo.description,  // Mantener la descripción completa para la vista previa
-          thumbnail: book.volumeInfo.imageLinks?.thumbnail
-        }));
+      this.googleBooksService.searchBooks(query).subscribe((books: any[]) => {
+        this.searchResults = books.map((book: any) => {
+          let thumbnail = book.volumeInfo.imageLinks?.thumbnail?.replace('http://', 'https://');
+          if (thumbnail) {
+            // Reemplaza 'zoom=1' o 'zoom=2' con 'zoom=3' para una mejor resolución
+            thumbnail = thumbnail.replace('&zoom=1', '&zoom=3').replace('&zoom=1', '&zoom=1');
+          }
+          return {
+            title: book.volumeInfo.title,
+            authors: book.volumeInfo.authors,
+            description: this.shortenDescription(book.volumeInfo.description, 100),
+            fullDescription: book.volumeInfo.description,
+            thumbnail: thumbnail
+          };
+        });
       });
     } else {
       this.searchResults = [];
     }
   }
-
+  
   shortenDescription(description: string, maxLength: number): string {
     if (description && description.length > maxLength) {
       return description.substring(0, maxLength) + '...';
@@ -76,7 +77,7 @@ export class Tab1Page implements OnInit {
         book: JSON.stringify({
           title: book.title,
           authors: book.authors,
-          description: book.fullDescription,  // Enviar la descripción completa
+          description: book.fullDescription,
           thumbnail: book.thumbnail
         })
       }

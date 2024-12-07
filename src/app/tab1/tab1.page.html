@@ -1,19 +1,15 @@
 <ion-header>
   <ion-toolbar>
-
     <div class="search-container">
-      <ion-searchbar placeholder="Encuentra tu proximo libro" [(ngModel)]="searchQuery" (ionInput)="onSearchChange($event)"></ion-searchbar>
+      <ion-searchbar placeholder="Encuentra tu próximo libro" [(ngModel)]="searchQuery" (ionInput)="onSearchChange($event)"></ion-searchbar>
       <ion-button shape="round" class="cam-button"><ion-icon class="large-icon" name="barcode-outline"></ion-icon></ion-button>
     </div>
-
   </ion-toolbar>
-
-  
 </ion-header>
 
 <ion-content class="content-background">
   <div class="tabs">
-    <span class="tab active">Paraa ti</span>
+    <span class="tab active">Para ti</span>
     <span class="tab">Los más populares</span>
   </div>
 
@@ -50,10 +46,9 @@
         </ion-col>
       </ion-row>
     </ion-grid>
- 
   </div>
+
   <div>
-  
     <h2>Destacados en negocios y liderazgo</h2>
     <ion-grid>
       <ion-row>
@@ -76,7 +71,7 @@
     <ion-buttons class="ion-justify-content-center">
       <ion-button routerLink="/tabs/tab1">Inicio</ion-button>
       <ion-button routerLink="/mis-libros">Mis libros</ion-button>
-      <ion-button routerLink="/user-profile">Perfil</ion-button>  
+      <ion-button routerLink="/user-profile">Perfil</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>
