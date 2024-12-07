@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -23,7 +26,19 @@ export class UserProfilePage implements OnInit {
     { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', cover: 'https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/625428ec261ac384603ebab3_609ab57f2f76e83b56daaf5c_9788418395185_web.jpeg' },
   ];
 
-  constructor() {}
+  constructor(private navCtrl: NavController, private authService: AuthService, private router: Router) {}
+
+  goBack() {
+    this.navCtrl.back();
+  }
+
+  onLogout(): void {
+    this.authService.logout();  // Limpia el almacenamiento local
+    this.router.navigate(['/login']);  // Redirige al usuario a la pantalla de inicio de sesión
+  }
+  
+
 
   ngOnInit() {}
 }
+
