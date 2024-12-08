@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleBooksService } from '../services/book.service';
 import { NavController } from '@ionic/angular';
+import { Book } from '../models/book.model'; // Importar la interfaz
 
 @Component({
   selector: 'app-tab1',
@@ -9,37 +10,60 @@ import { NavController } from '@ionic/angular';
 })
 export class Tab1Page implements OnInit {
   searchQuery: string = '';
-  searchResults: any[] = [];
+  searchResults: Book[] = [];
 
-  personalizedBooks = [
+  personalizedBooks: Book[] = [
     {
       title: 'The 7 Habits of Highly Effective People',
-      author: 'Stephen Covey',
-      image: 'assets/7_habits.jpg'
+      authors: ['Stephen Covey'],
+      description: '',
+      fullDescription: '',
+      thumbnail: 'assets/7_habits.jpg',
+      isLoading: true
     },
     {
       title: 'The Lean Startup',
-      author: 'Eric Ries',
-      image: 'assets/lean_startup.jpg'
+      authors: ['Eric Ries'],
+      description: '',
+      fullDescription: '',
+      thumbnail: 'assets/lean_startup.jpg',
+      isLoading: true
     },
   ];
 
-  popularBooks = [
+  popularBooks: Book[] = [
     {
       title: 'The Power of Habit',
-      author: 'Charles Duhigg',
-      image: 'https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/625428ec261ac384603ebab3_609ab57f2f76e83b56daaf5c_9788418395185_web.jpeg'
+      authors: ['Charles Duhigg'],
+      description: '',
+      fullDescription: '',
+      thumbnail: 'https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/625428ec261ac384603ebab3_609ab57f2f76e83b56daaf5c_9788418395185_web.jpeg',
+      isLoading: true
     },
     {
       title: 'The Lean Startup',
-      author: 'Eric Ries',
-      image: 'https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/625428ec261ac384603ebab3_609ab57f2f76e83b56daaf5c_9788418395185_web.jpeg'
+      authors: ['Eric Ries'],
+      description: '',
+      fullDescription: '',
+      thumbnail: 'https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/625428ec261ac384603ebab3_609ab57f2f76e83b56daaf5c_9788418395185_web.jpeg',
+      isLoading: true
     },
   ];
 
-  constructor(private googleBooksService: GoogleBooksService, private navCtrl: NavController) {}
+  constructor(
+    private googleBooksService: GoogleBooksService, 
+    private navCtrl: NavController
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.markAllImagesLoading();
+  }
+
+  markAllImagesLoading() {
+    this.personalizedBooks.forEach(book => book.isLoading = true);
+    this.popularBooks.forEach(book => book.isLoading = true);
+  }
+
   onSearchChange(event: any) {
     const query = this.searchQuery.toLowerCase();
     if (query) {
@@ -47,7 +71,6 @@ export class Tab1Page implements OnInit {
         this.searchResults = books.map((book: any) => {
           let thumbnail = book.volumeInfo.imageLinks?.thumbnail?.replace('http://', 'https://');
           if (thumbnail) {
-            // Reemplaza 'zoom=1' o 'zoom=2' con 'zoom=3' para una mejor resolución
             thumbnail = thumbnail.replace('&zoom=1', '&zoom=3').replace('&zoom=1', '&zoom=1');
           }
           return {
@@ -55,7 +78,8 @@ export class Tab1Page implements OnInit {
             authors: book.volumeInfo.authors,
             description: this.shortenDescription(book.volumeInfo.description, 100),
             fullDescription: book.volumeInfo.description,
-            thumbnail: thumbnail
+            thumbnail: thumbnail,
+            isLoading: true
           };
         });
       });
@@ -63,12 +87,16 @@ export class Tab1Page implements OnInit {
       this.searchResults = [];
     }
   }
-  
+
   shortenDescription(description: string, maxLength: number): string {
     if (description && description.length > maxLength) {
       return description.substring(0, maxLength) + '...';
     }
     return description;
+  }
+
+  onImageLoad(book: Book) {
+    book.isLoading = false;
   }
 
   viewBookPreview(book: any) {

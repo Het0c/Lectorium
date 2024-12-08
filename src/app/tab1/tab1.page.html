@@ -19,11 +19,14 @@
       <ion-row>
         <ion-col size="6" *ngFor="let book of searchResults">
           <ion-card (click)="viewBookPreview(book)">
-            <img [src]="book.thumbnail" />
+            <div class="image-container">
+              <ion-spinner *ngIf="book.isLoading"></ion-spinner>
+              <img [src]="book.thumbnail" (load)="onImageLoad(book)" *ngIf="!book.isLoading" />
+            </div>
             <ion-card-content>
               <h3>{{ book.title }}</h3>
               <p>{{ book.authors?.join(', ') }}</p>
-              <p>{{ book.description }}</p> 
+              <p>{{ book.description }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -37,10 +40,13 @@
       <ion-row>
         <ion-col size="6" *ngFor="let book of personalizedBooks">
           <ion-card>
-            <img [src]="book.image" />
+            <div class="image-container">
+              <ion-spinner *ngIf="book.isLoading"></ion-spinner>
+              <img [src]="book.thumbnail" (load)="onImageLoad(book)" *ngIf="!book.isLoading" />
+            </div>
             <ion-card-content>
               <h3>{{ book.title }}</h3>
-              <p>{{ book.author }}</p>
+              <p>{{ book.authors?.join(', ') }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -54,10 +60,13 @@
       <ion-row>
         <ion-col size="6" *ngFor="let book of popularBooks">
           <ion-card>
-            <img [src]="book.image" />
+            <div class="image-container">
+              <ion-spinner *ngIf="book.isLoading"></ion-spinner>
+              <img [src]="book.thumbnail" (load)="onImageLoad(book)" *ngIf="!book.isLoading" />
+            </div>
             <ion-card-content>
               <h3>{{ book.title }}</h3>
-              <p>{{ book.author }}</p>
+              <p>{{ book.authors?.join(', ') }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
