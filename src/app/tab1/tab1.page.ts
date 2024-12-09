@@ -101,10 +101,10 @@ export class Tab1Page implements OnInit {
   
   }
 
-  markAllImagesLoading() {
-    this.personalizedBooks.forEach(book => book.isLoading = true);
-    this.popularBooks.forEach(book => book.isLoading = true);
-  }
+ // markAllImagesLoading() {
+ //   this.personalizedBooks.forEach(book => book.isLoading = true);
+//    this.popularBooks.forEach(book => //book.isLoading = true);
+//  }
 
 
   
