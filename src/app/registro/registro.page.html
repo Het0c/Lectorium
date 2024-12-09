@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="light">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/login"></ion-back-button>
     </ion-buttons>
@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="register-background">
   <ion-grid class="register-grid">
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" size-md="8" size-lg="6">
@@ -16,32 +16,29 @@
             <form (ngSubmit)="onRegister()">
               <ion-item class="input-item">
                 <ion-icon name="mail-outline" slot="start"></ion-icon>
-                <ion-label position="floating">Correo</ion-label>
-                <ion-input [(ngModel)]="credentials.username" name="username" type="email" required></ion-input>
+                <ion-input [(ngModel)]="credentials.username" name="username" type="email" required placeholder="Correo"></ion-input>
               </ion-item>
               <ion-item class="input-item">
                 <ion-icon name="key-outline" slot="start"></ion-icon>
-                <ion-label position="floating">Contraseña</ion-label>
-                <ion-input [(ngModel)]="credentials.password" name="password" type="password" required></ion-input>
+                <ion-input [(ngModel)]="credentials.password" name="password" type="password" required placeholder="Contraseña"></ion-input>
               </ion-item>
               <ion-item class="input-item">
                 <ion-icon name="key-outline" slot="start"></ion-icon>
-                <ion-label position="floating">Confirma tu contraseña</ion-label>
-                <ion-input [(ngModel)]="credentials.confirmPassword" name="confirmPassword" type="password" required></ion-input>
+                <ion-input [(ngModel)]="credentials.confirmPassword" name="confirmPassword" type="password" required placeholder="Confirma tu contraseña"></ion-input>
               </ion-item>
               <ion-item lines="none">
                 <ion-checkbox [(ngModel)]="credentials.agreeToTerms" name="agreeToTerms" slot="start" required></ion-checkbox>
-                <ion-label>
-                  Estoy de acuerdo con los terminos de servicio y la politica de privacidad.
+                <ion-label class="terms-label">
+                  Acepto los términos y condiciones.
                 </ion-label>
               </ion-item>
-              <p class="terms-text">Al hacer click en esta casilla, confirmas que has leido y aceptado nuestros terminos.</p>
+              <p class="terms-text">Al continuar, confirmas que has leído y aceptado nuestros términos y políticas.</p>
               <ion-row class="button-row">
-                <ion-col size="6">
+                <ion-col size="12">
                   <ion-button expand="full" class="signup-button" type="submit">Crear cuenta</ion-button>
                 </ion-col>
-                <ion-col size="6">
-                  <ion-button expand="full" color="light" class="register-button" (click)="goToLogin()">¿Ya tienes una cuenta? Inicia Sesión</ion-button>
+                <ion-col size="12">
+                  <ion-button expand="full" class="register-button" color="light" (click)="goToLogin()">¿Ya tienes cuenta? Inicia sesión</ion-button>
                 </ion-col>
               </ion-row>
             </form>

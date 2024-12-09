@@ -1,52 +1,64 @@
-
-ion-card{
-  margin-top: 120px;
+/* Fondo */
+.register-background {
+  background: linear-gradient(135deg, #1E2D38, #263238); /* Fondo elegante */
+  height: 100%;
 }
 
+/* Grid */
 .register-grid {
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    background-image: url('/assets/registro-fondo.jpg');
-    background-size: cover;
-    background-position: center; /* Centra la imagen en el grid */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-  }
-  
-  .register-card {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    background-color: #fff;
-  }
-  
-  .input-item {
-    margin-bottom: 20px;
-  }
-  
-  .signup-button {
-    background: linear-gradient(135deg, #6e45e2, #88d3ce);
-    border-radius: 25px;
-    box-shadow: 0 5px 15px rgba(110, 69, 226, 0.5);
-    margin-top: 20px;
-  }
-  
-  .register-button {
-    justify-content: center;
-    border-radius: 25px;
-    margin-top: 10px;
-    
-  }
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
 
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
+/* Card */
+.register-card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  background-color: #F5F5F5; /* Fondo claro */
+  padding: 20px;
+}
+
+/* Inputs */
+.input-item {
+  margin-bottom: 20px;
+  --background: #FFFFFF;
+  border-radius: 8px;
+  padding: 5px 10px;
+  --highlight-color-focused: #FFAB40; /* Naranja pastel */
+}
+
+ion-icon {
+  color: #FFAB40; /* Naranja pastel */
+}
+
+/* Botones */
+.signup-button {
+  --background: #81D4FA; /* Azul claro */
+  color: #FFFFFF;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.register-button {
+  --background: #FFD180; /* Naranja pastel */
+  color: #FFFFFF;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Checkbox y términos */
+.terms-label {
+  font-size: 14px;
+  color: #81D4FA;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: #888888;
+  margin-top: 10px;
+}

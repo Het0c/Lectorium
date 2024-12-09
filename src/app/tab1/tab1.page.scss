@@ -1,57 +1,12 @@
-// /* Estilo general para el contenido */
-// #main-content {
-//     --background: #f4f4f9; /* Fondo claro y agradable */
-//   }
-  
-//   /* Estilo para las imágenes */
-//   .horizontal-image {
-//     width: 100%;
-//     border-radius: 10px;
-//     margin: 10px 0;
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   }
-  
-//   /* Estilo para las categorías */
-//   ion-card {
-//     border-radius: 15px;
-//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-//     transition: transform 0.3s ease-in-out;
-//   }
-  
-//   ion-card:hover {
-//     transform: scale(1.05);
-//   }
-  
-//   ion-card-title {
-//     font-family: 'Roboto', sans-serif;
-//     font-size: 1.1em;
-//     color: #333;
-//   }
-  
-//   ion-img {
-//     border-top-left-radius: 15px;
-//     border-top-right-radius: 15px;
-//   }
-  
-//   /* Estilo para el botón flotante */
-//   ion-fab-button {
-//     --background: #007bff;
-//   }
-  
-//   ion-fab-button ion-img {
-//     width: 40px;
-//     height: 40px;
-//   }
-ion-toolbar {
-  --background: #ffffff;
-}
-
+/* Fondo general */
 .content-background {
-  background-image: url('/assets/papel.jpg');
+  background: linear-gradient(135deg, #1E2D38, #263238);
+  
 }
 
+/* Buscador */
 ion-searchbar {
-  --background: #f1f1f1;
+  --background: #FFFFFF;
   --color: #000;
   margin: 8px;
   border-radius: 10px;
@@ -60,7 +15,7 @@ ion-searchbar {
 }
 
 .large-icon {
-  color: black;
+  color: #FFAB40;
   font-size: 30px;
 }
 
@@ -71,15 +26,18 @@ ion-searchbar {
 }
 
 .cam-button {
-  float: right;
-  margin-right: 15px;
+  --background: #FFD180;
+  color: #FFFFFF;
+  border-radius: 50%;
+  padding: 5px;
 }
 
+/* Tabs */
 .tabs {
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   font-weight: 500;
 }
 
@@ -89,51 +47,44 @@ ion-searchbar {
 }
 
 .active {
-  color: #000;
-  border-bottom: 2px solid #000;
+  color: #FFAB40;
+  border-bottom: 2px solid #FFAB40;
 }
 
+/* Secciones */
 .section {
   padding: 10px;
-  background-image: url('/assets/papel.jpg');
+  background-color: #1E2D38; /* Fondo oscuro */
   background-size: cover;
-  background-position: center; /* Centra la imagen en el grid */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center;
+  background-repeat: no-repeat;
+
 
   h2 {
     font-weight: 600;
     margin-bottom: 10px;
+    color: #81D4FA;
   }
-
-  ion-card {
-    border-radius: 10px;
-    overflow: hidden;
-
-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;  /* Ajusta la imagen para cubrir el contenedor */
 }
 
-    }
+/* Tarjetas */
+.custom-card {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
+}
 
-    ion-card-content {
-      h3 {
-        font-size: 14px;
-        font-weight: 600;
-      }
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
 
-      p {
-        font-size: 12px;
-        color: #666;
-      }
-    }
-  }
-
-
+/* Estilo del footer */
 ion-footer {
   ion-toolbar {
-    --background: #ffffff;
+    --background: #FFFFFF;
     display: flex;
     justify-content: space-around;
   }
@@ -141,5 +92,6 @@ ion-footer {
   ion-button {
     color: #000;
     font-size: 14px;
+    font-weight: bold;
   }
 }

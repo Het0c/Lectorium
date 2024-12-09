@@ -1,83 +1,75 @@
+/* Fondo */
 .login-grid {
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    background-image: url('/assets/fondo-hoja-antigua.jpg'); 
-    background-size: cover;
-    background-position: center; /* Centra la imagen en el grid */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-  }
-  
-  ion-card {
-    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    animation: fadeIn 0.6s ease-in-out;
-    justify-content: center;
-    margin-top: 100px;
-  }
-  
+  height: 100%;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  background-color: #1E2D38; /* Fondo oscuro */
+  padding: 20px;
+}
 
-  .login-icon {
-    font-size: 5rem;
-    color: #000000;
-    // animation: pulse 5s infinite;
-  }
-  
-  .login-button {
-    margin-top: 20px;
-    border-radius: 8px;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  .login-background {
-    background: url('/assets/img/fondo-geometrico.jpg') no-repeat center center / cover;
-  }
-  
-  .login-card {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    background-color: #fff2b9;
-  }
-  
-  .input-item {
-    margin-bottom: 25px;
-    --background: #fff2b9;
-  }
-  
-  .login-button {
-    background: linear-gradient(135deg, #6e45e2, #88d3ce);
-    border-radius: 4px;
-    border: 2px solid #6862ff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  }
-  
-  .register-button {
-    background: linear-gradient(135deg, #6e45e2, #88d3ce);
-    border-radius: 4px;
-    border: 2px solid #6e45e2;
-    margin-top: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  }
-  
+/* Contenedor del logo */
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Imagen del logo */
+.logo-img {
+  max-width: 120px; /* Ajusta el tamaño del logo */
+  height: auto;
+  border-radius: 12px; /* Bordes redondeados para estética */
+  margin-top: -100px;  /* Ajusta este valor para mover el logo hacia arriba */
+}
+
+/* Card */
+ion-card {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  background-color: #F5F5F5; /* Fondo claro */
+  padding: 20px;
+}
+
+/* Inputs */
+.input-item {
+  margin-bottom: 20px;
+  --background: #FFFFFF;
+  border-radius: 8px;
+  padding: 5px 10px;
+  --highlight-color-focused: #FFAB40; /* Naranja suave */
+}
+
+/* Iconos en los inputs */
+ion-icon {
+  color: #FFAB40; /* Naranja pastel */
+}
+
+/* Botón de inicio de sesión */
+.login-button {
+  --background: #81D4FA; /* Azul claro */
+  color: #FFFFFF; /* Texto blanco */
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* Botón de registro */
+.register-button {
+  --background: #FFD180; /* Naranja pastel */
+  color: #FFFFFF; /* Texto blanco */
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Enlace de contraseña olvidada */
+.forgot-password-link a {
+  color: #81D4FA; /* Azul claro */
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+/* Fondo de contenido */
+.login-background {
+  background: linear-gradient(135deg, #1E2D38, #263238); /* Fondo elegante */
+}

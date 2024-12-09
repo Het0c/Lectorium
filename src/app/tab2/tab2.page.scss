@@ -1,4 +1,4 @@
-  ion-toolbar {
+ion-toolbar {
   --background: #ffffff;
 }
 
@@ -27,13 +27,12 @@ ion-searchbar {
   }
 }
 
-
 .section {
   padding: 10px;
-  background-image: url('/assets/bookshelf.jpg');
+  background-color: #1E2D38; /* Fondo oscuro */
   background-size: cover;
-  background-position: center; /* Centra la imagen en el grid */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center;
+  background-repeat: no-repeat;
 
   h1 {
     font-weight: 600;
@@ -55,6 +54,7 @@ ion-searchbar {
       h3 {
         font-size: 14px;
         font-weight: 600;
+        color: #333; /* Color para los títulos dentro de los cards */
       }
 
       p {
