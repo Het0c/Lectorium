@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleBooksService } from '../services/book.service';
 import { NavController } from '@ionic/angular';
+
 import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } from '@capacitor/push-notifications';
 import { Capacitor } from '@capacitor/core';
+
 import { Book } from '../models/book.model'; // Importar la interfaz
+
 
 @Component({
   selector: 'app-tab1',
@@ -58,7 +61,7 @@ export class Tab1Page implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.markAllImagesLoading();
+    this.markAllImagesLoading()
     console.log('Initializing HomePage');
 
       if (Capacitor.isNativePlatform()) {
@@ -95,6 +98,7 @@ export class Tab1Page implements OnInit {
       });
     }
   
+  
   }
 
   markAllImagesLoading() {
@@ -104,6 +108,7 @@ export class Tab1Page implements OnInit {
 
 
   
+
   onSearchChange(event: any) {
     const query = this.searchQuery.toLowerCase();
     if (query) {
