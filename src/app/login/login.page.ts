@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
 
@@ -17,12 +17,25 @@ export class LoginPage {
   constructor(
     private navCtrl: NavController, 
     private authService: AuthService, 
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private loadingController: LoadingController // Importar LoadingController
   ) {}
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+    });
+    await loading.present();
+    return loading;
+  }
+
   async onLogin() {
+    const loading = await this.presentLoading(); // Mostrar pantalla de carga
+
     this.authService.login(this.credentials.username, this.credentials.password).subscribe(
       async (user) => {
+        await loading.dismiss(); // Ocultar pantalla de carga
+
         if (user) {
           // Guardar las credenciales en localStorage
           this.authService.setSession(this.credentials.username, this.credentials.password);
@@ -39,6 +52,7 @@ export class LoginPage {
         }
       },
       async (error) => {
+        await loading.dismiss(); // Ocultar pantalla de carga
         console.error('Error de Login', error); // Depuración
         const alert = await this.alertCtrl.create({
           header: 'Error',
