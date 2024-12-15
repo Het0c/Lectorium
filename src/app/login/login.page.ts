@@ -18,7 +18,7 @@ export class LoginPage {
     private navCtrl: NavController, 
     private authService: AuthService, 
     private alertCtrl: AlertController,
-    private loadingController: LoadingController // Importar LoadingController
+    private loadingController: LoadingController
   ) {}
 
   async presentLoading() {
@@ -30,18 +30,16 @@ export class LoginPage {
   }
 
   async onLogin() {
-    const loading = await this.presentLoading(); // Mostrar pantalla de carga
+    const loading = await this.presentLoading();
 
     this.authService.login(this.credentials.username, this.credentials.password).subscribe(
       async (user) => {
-        await loading.dismiss(); // Ocultar pantalla de carga
+        await loading.dismiss();
 
         if (user) {
-          // Guardar las credenciales en localStorage
-          this.authService.setSession(this.credentials.username, this.credentials.password);
-          this.navCtrl.navigateForward('/tabs', {
-            queryParams: { username: this.credentials.username }
-          });
+          this.authService.setCurrentUser(user);  // Guardar el usuario actual
+          this.authService.setSession(user);  // Configura la sesión
+          this.navCtrl.navigateForward('/tabs/tab1');  // Redirigir a la página principal
         } else {
           const alert = await this.alertCtrl.create({
             header: 'Error',
@@ -52,8 +50,8 @@ export class LoginPage {
         }
       },
       async (error) => {
-        await loading.dismiss(); // Ocultar pantalla de carga
-        console.error('Error de Login', error); // Depuración
+        await loading.dismiss();
+        console.error('Error de Login', error);
         const alert = await this.alertCtrl.create({
           header: 'Error',
           message: `No se pudo iniciar sesión. ${error.error?.error || 'Por favor, verifica tus credenciales.'}`,

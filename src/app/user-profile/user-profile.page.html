@@ -1,13 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button (click)="goBack()"><ion-icon name="arrow-back-outline"></ion-icon>Volver</ion-button>
-    <ion-button (click)="onLogout()"><ion-icon name="log-out-outline"></ion-icon>Cerrar Sesión</ion-button>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="onLogout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header>
+  <ion-toolbar>
     <ion-title>Perfil de Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card *ngIf="user">
+    <ion-card-header>
+      <img [src]="'https://server-lectorium.onrender.com' + user.profilePicture || 'assets/default-profile.png'" alt="Profile Picture" class="profile-picture">
+      <ion-card-title>{{ user.name }}</ion-card-title>
+      <ion-card-subtitle>{{ user.email }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Nombre:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <input type="file" (change)="onFileSelected($event)">
+      <ion-button (click)="onUpload()">Subir Imagen</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<!-- 
+
+<ion-content>
+  <ion-card> 
     <img src="/assets/icon/user_example.png" *ngIf="user.profilePicture" />
     <ion-card-content>
       <h2>{{ user.name }}</h2>
@@ -61,4 +92,4 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-footer>
-</ion-content>
+</ion-content> -->

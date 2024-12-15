@@ -57,9 +57,6 @@ const routes: Routes = [
     loadChildren: () => import('./mis-libros/mis-libros.module').then( m => m.MisLibrosPageModule)
   },
 
-
-
-
 ];
 
 @NgModule({

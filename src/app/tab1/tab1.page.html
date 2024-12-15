@@ -23,11 +23,11 @@
           <ion-card (click)="viewBookPreview(book)" class="custom-card">
             <div class="image-container">
               <ion-spinner *ngIf="book.isLoading"></ion-spinner>
-              <img [src]="book.thumbnail" (load)="onImageLoad(book)" *ngIf="!book.isLoading" />
+              <img [src]="book.thumbnail" (load)="onImageLoad(book)" (error)="onImageError(book)" />
             </div>
             <ion-card-content>
               <h3>{{ book.title }}</h3>
-              <p>{{ book.authors.join(', ') }}</p>
+              <p *ngIf="book.authors">{{ book.authors.join(', ') }}</p>
               <p>{{ book.description }}</p>
             </ion-card-content>
           </ion-card>
@@ -44,11 +44,11 @@
           <ion-card class="custom-card">
             <div class="image-container">
               <ion-spinner *ngIf="book.isLoading"></ion-spinner>
-              <img [src]="book.thumbnail" (load)="onImageLoad(book)" *ngIf="!book.isLoading" />
+              <img [src]="book.thumbnail" (load)="onImageLoad(book)" (error)="onImageError(book)" *ngIf="!book.isLoading" />
             </div>
             <ion-card-content>
               <h3>{{ book.title }}</h3>
-              <p>{{ book.authors.join(', ') }}</p>
+              <p *ngIf="book.authors">{{ book.authors.join(', ') }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -64,11 +64,11 @@
           <ion-card class="custom-card">
             <div class="image-container">
               <ion-spinner *ngIf="book.isLoading"></ion-spinner>
-              <img [src]="book.thumbnail" (load)="onImageLoad(book)" *ngIf="!book.isLoading" />
+              <img [src]="book.thumbnail" (load)="onImageLoad(book)" (error)="onImageError(book)" *ngIf="!book.isLoading" />
             </div>
             <ion-card-content>
               <h3>{{ book.title }}</h3>
-              <p>{{ book.authors.join(', ') }}</p>
+              <p *ngIf="book.authors">{{ book.authors.join(', ') }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>

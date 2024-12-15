@@ -12,8 +12,9 @@ export class AuthService {
   private apiUrl = environment.apiUrl;  // Usar la URL del entorno
 
   constructor(private http: HttpClient) {}
-
   userEmail: string ="";  // Define la propiedad userEmail
+  private currentUser: any;
+
 
   login(email: string, password: string): Observable<any> {
     this.userEmail = email;  // Asigna el valor a userEmail
@@ -22,7 +23,7 @@ export class AuthService {
         catchError(this.handleError)  // Manejo de errores
       );
   }
-
+  
 
 
 
@@ -49,14 +50,28 @@ export class AuthService {
     localStorage.removeItem('userCredentials');
   }
 
-  setSession(email: string, password: string): void {
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('userCredentials', JSON.stringify({ email, password }));
-  }
 
+  setSession(user: any): void {
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('userCredentials', JSON.stringify(user));
+    this.currentUser = user;
+  }
+  
   getSession(): { email: string, password: string } | null {
     const creds = localStorage.getItem('userCredentials');
     return creds ? JSON.parse(creds) : null;
+  }
+
+  setCurrentUser(user: any) {
+    this.currentUser = user;
+  }
+ 
+  getCurrentUser() {
+    return this.currentUser;
+  }
+
+  getUserProfile(userId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/profile/${userId}`);
   }
 
 

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleBooksService } from '../services/book.service';
+import { OpenLibraryService } from '../services/book.service';
 import { NavController } from '@ionic/angular';
 
 import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } from '@capacitor/push-notifications';
 import { Capacitor } from '@capacitor/core';
 
 import { Book } from '../models/book.model'; // Importar la interfaz
-
 
 @Component({
   selector: 'app-tab1',
@@ -56,77 +55,48 @@ export class Tab1Page implements OnInit {
   ];
 
   constructor(
-    private googleBooksService: GoogleBooksService, 
+    private openLibraryService: OpenLibraryService, 
     private navCtrl: NavController
   ) {}
 
   ngOnInit() {
-    this.markAllImagesLoading()
     console.log('Initializing HomePage');
 
-      if (Capacitor.isNativePlatform()) {
-      // Request permission to use push notifications
-      // iOS will prompt user and return if they granted permission or not
-      // Android will just grant without prompting
+    if (Capacitor.isNativePlatform()) {
       PushNotifications.requestPermissions().then((result) => {
         if (result.receive === 'granted') {
-          // Register with Apple / Google to receive push via APNS/FCM
           PushNotifications.register();
-        } else {
-          // Show some error
         }
       });
-  
-      // On success, we should be able to receive notifications
-      PushNotifications.addListener('registration', (token: Token) => {
-        
-      });
-  
-      // Some issue with our setup and push will not work
+
+      PushNotifications.addListener('registration', (token: Token) => {});
+
       PushNotifications.addListener('registrationError', (error: any) => {
         alert('Error on registration: ' + JSON.stringify(error));
       });
-  
-      // Show us the notification payload if the app is open on our device
+
       PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) => {
         alert('Push received: ' + JSON.stringify(notification));
       });
-  
-      // Method called when tapping on a notification
+
       PushNotifications.addListener('pushNotificationActionPerformed', (notification: ActionPerformed) => {
         alert('Push action performed: ' + JSON.stringify(notification));
       });
     }
-  
-  
   }
-
- // markAllImagesLoading() {
- //   this.personalizedBooks.forEach(book => book.isLoading = true);
-//    this.popularBooks.forEach(book => //book.isLoading = true);
-//  }
-
-
-  
 
   onSearchChange(event: any) {
     const query = this.searchQuery.toLowerCase();
     if (query) {
-      this.googleBooksService.searchBooks(query).subscribe((books: any[]) => {
-        this.searchResults = books.map((book: any) => {
-          let thumbnail = book.volumeInfo.imageLinks?.thumbnail?.replace('http://', 'https://');
-          if (thumbnail) {
-            thumbnail = thumbnail.replace('&zoom=1', '&zoom=3').replace('&zoom=1', '&zoom=1');
-          }
-          return {
-            title: book.volumeInfo.title,
-            authors: book.volumeInfo.authors,
-            description: this.shortenDescription(book.volumeInfo.description, 100),
-            fullDescription: book.volumeInfo.description,
-            thumbnail: thumbnail,
-            isLoading: true
-          };
-        });
+      this.openLibraryService.searchBooks(query).subscribe((books: any[]) => {
+        this.searchResults = books.map((book: any) => ({
+          title: book.title,
+          authors: book.authors || [], // Asegúrate de que authors no sea undefined
+          description: this.shortenDescription(book.description, 100),
+          fullDescription: book.fullDescription,
+          thumbnail: book.thumbnail,
+          isLoading: true
+        }));
       });
     } else {
       this.searchResults = [];
@@ -143,7 +113,11 @@ export class Tab1Page implements OnInit {
   onImageLoad(book: Book) {
     book.isLoading = false;
   }
-
+  
+  onImageError(book: Book) {
+    book.isLoading = false;
+    book.thumbnail = 'assets/default-thumbnail.jpg'; // Ruta a una imagen por defecto
+  }
   viewBookPreview(book: any) {
     this.navCtrl.navigateForward('/book-preview', {
       queryParams: {
@@ -157,5 +131,3 @@ export class Tab1Page implements OnInit {
     });
   }
 }
-
- 
