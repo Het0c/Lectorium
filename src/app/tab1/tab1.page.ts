@@ -97,6 +97,9 @@ export class Tab1Page implements OnInit {
           thumbnail: book.thumbnail,
           isLoading: true
         }));
+       /* this.navCtrl.navigateForward('/search-results', { 
+          state: { searchResults: this.searchResults } 
+        }); */
       });
     } else {
       this.searchResults = [];
