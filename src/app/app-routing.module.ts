@@ -55,7 +55,11 @@ const routes: Routes = [
   {
     path: 'mis-libros',
     loadChildren: () => import('./mis-libros/mis-libros.module').then( m => m.MisLibrosPageModule)
+  },  {
+    path: 'search-results',
+    loadChildren: () => import('./search-results/search-results.module').then( m => m.SearchResultsPageModule)
   },
+
 
 ];
 

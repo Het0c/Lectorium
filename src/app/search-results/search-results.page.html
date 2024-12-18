@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Resultados de la Búsqueda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+  <div class="section" *ngIf="searchResults.length > 0">
+    <h2>Resultados de la búsqueda</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let book of searchResults">
+          <ion-card (click)="viewBookPreview(book)" class="custom-card">
+            <div class="image-container">
+              <ion-spinner *ngIf="book.isLoading"></ion-spinner>
+              <img [src]="book.thumbnail" (load)="onImageLoad(book)" (error)="onImageError(book)" />
+            </div>
+            <ion-card-content>
+              <h3>{{ book.title }}</h3>
+              <p *ngIf="book.authors">{{ book.authors.join(', ') }}</p>
+              <p>{{ book.description }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="searchResults.length === 0">
+    <p>No se encontraron resultados para la búsqueda.</p>
+  </div>
+</ion-content> -->
+
